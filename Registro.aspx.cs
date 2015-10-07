@@ -34,7 +34,8 @@ namespace Agapea
 
                 try
                 {
-                    Response.Redirect("Inicio.aspx");
+                    this.Session["Usuario"] = inputUsuario.Text;
+                    this.Response.Redirect("Inicio.aspx?usuario"+this.inputUsuario.Text);
                 }
                 catch (Exception)
                 {

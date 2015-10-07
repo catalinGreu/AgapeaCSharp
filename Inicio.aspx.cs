@@ -16,6 +16,21 @@ namespace Agapea
         protected void Page_Load(object sender, EventArgs e)
 
         {
+            this.LabelUser.Text = (string) this.Request.QueryString["Usuario"];
+            ///---llamada a procedimiento interno para ver variables post
+
+            mostrar();
+            if (this.IsPostBack)
+            {
+                foreach (string clave in this.Request.Params.AllKeys)
+                {
+                    if ( clave == this.ButtonCompra.ID)
+                    {
+                        this.LabelUser.Text = "HAS PULSADO EL BOTON!!";
+                    }
+                }
+                
+            }
             __controlInit = new Controlador_Vista_Inicio();
 
             List<Libro> librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
@@ -29,9 +44,28 @@ namespace Agapea
 
                 row.Cells.Add(cell);
 
-                tablaLibros.Controls.Add(new Label() { Text = "Titulo: " + l.Titulo + "\n" + "Autor: " + l.Autor + "\n" + l.Editorial + " " + l.Categoria + " " + l.NumPag + " " + l.Precio });
+                try
+                {
+                    cell.Controls.Add(new Label() { Text = "Titulo: " + l.Titulo + "\n" + "Autor: " + l.Autor });
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
+        }
+
+        private void mostrar()
+        {
+            string mensaje = "";
+            foreach (string clave in this.Request.Params.Keys )
+            {
+                mensaje += "clave:_" + clave + " -------valor:_" + 
+                    this.Request.Params[clave].ToString() + "\n";
+            }
+            this.TextBox1.Text = mensaje;
         }
     }
 }
