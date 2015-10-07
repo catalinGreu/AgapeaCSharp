@@ -1,0 +1,6 @@
+idUser: iuy, Correo: iuy, Contraseña: yyy, Nombre: yiuy, Apellidos: iuy
+
+idUser: kjh, Correo: kjh, Contraseña: hhh, Nombre: kjh, Apellidos: khj
+
+idUser: nuevo, Correo: lkj, Contraseña: lkjlkj, Nombre: jjj, Apellidos: jjj
+

@@ -1,0 +1,2 @@
+idUser: jon, Correo: pollon, Contraseña: asdasd, Nombre: aaa, Apellidos: aaaaa
+
