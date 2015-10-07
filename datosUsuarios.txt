@@ -40,3 +40,5 @@ idUser: Pablo, Correo: lkj, Contraseña: lkj, Nombre: lkj, Apellidos: lkj
 
 idUser: Paco, Correo: lkj, Contraseña: lkj, Nombre: lkj, Apellidos: lkj
 
+idUser: User, Correo: lkj, Contraseña: lkj, Nombre: lkj, Apellidos: lkj
+

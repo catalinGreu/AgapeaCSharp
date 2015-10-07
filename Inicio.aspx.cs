@@ -33,7 +33,8 @@ namespace Agapea
             }
             __controlInit = new Controlador_Vista_Inicio();
 
-            List<Libro> librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
+            List<Libro> librosFichero = new List<Libro>();
+            librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
             //Devuelve una lista de libros...con sus atributos cargados.
 
             foreach (Libro l in librosFichero)
@@ -43,7 +44,7 @@ namespace Agapea
                 tablaLibros.Rows.Add(row);
 
                 row.Cells.Add(cell);
-
+                tablaLibros.BorderColor.B;
                 try
                 {
                     cell.Controls.Add(new Label() { Text = "Titulo: " + l.Titulo + "\n" + "Autor: " + l.Autor });
