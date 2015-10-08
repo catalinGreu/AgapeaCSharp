@@ -26,7 +26,6 @@ namespace Agapea.App_Code.controladores
                 
                 string [] elementos = linea.Split ( new char[] { ':' } );
 
-                Console.WriteLine(elementos.Length);
                 l = new Libro();
 
                 l.Titulo = elementos[0];
