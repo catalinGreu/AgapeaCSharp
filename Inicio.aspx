@@ -42,7 +42,7 @@
             <tr>
                 <td colspan="2">
                     <asp:Label ID="LabelUser" runat="server"></asp:Label>
-                    <asp:TextBox ID="TextBox1" runat="server" Height="235px" TextMode="MultiLine" Width="547px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Height="235px" TextMode="MultiLine" Width="547px" EnableViewState="False"></asp:TextBox>
                     <asp:Button ID="ButtonCompra" runat="server" Text="Comprar" />
                     <asp:Image ID="Image2" runat="server" ImageUrl="~/imagenes/pie.png" />
                 </td>

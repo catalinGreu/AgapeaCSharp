@@ -1,4 +1,0 @@
-idUser: lkj, Correo: lkj, Contraseña: lkj, Nombre: lkj, Apellidos: lkj
-
-idUser: cataling-reu, Correo: cata@hotmail.rog, Contraseña: 1234, Nombre: Catalin, Apellidos: Greu
-

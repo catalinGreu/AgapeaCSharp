@@ -19,10 +19,11 @@ namespace Agapea.App_Code.controladores
             //int cont = 0;
             string linea;
             fichero = new StreamReader( HttpContext.Current.Request.MapPath( ruta ) );
+            lista = new List<Libro>();
 
             while ( ( linea = fichero.ReadLine()) != null ) 
             {
-                lista = new List<Libro>();
+                
                 string [] elementos = linea.Split ( new char[] { ':' } );
 
                 Console.WriteLine(elementos.Length);

@@ -24,10 +24,10 @@ namespace Agapea.App_Code.controladores
 
             try {
                 //existe y lo abre, o no existe y lo crea, true
-                if ( micontrolador.AbrirFichero( HttpContext.Current.Request.MapPath ("./datosUsuarios.txt") ) )
+                if ( micontrolador.AbrirFichero( HttpContext.Current.Request.MapPath ("./Ficheros/datosUsuarios.txt") ) )
                     {
                     
-                    micontrolador.GrabarDatos( nuevoUsuario, HttpContext.Current.Request.MapPath("./datosUsuarios.txt")); 
+                    micontrolador.GrabarDatos( nuevoUsuario, HttpContext.Current.Request.MapPath("./Ficheros/datosUsuarios.txt")); 
                 }
             }
             catch (Exception e) {
