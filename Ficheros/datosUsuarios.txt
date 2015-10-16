@@ -1,32 +1,22 @@
 idUser: jon, Correo: pollon, Contraseña: asdasd, Nombre: aaa, Apellidos: aaaaaidUser: lkj, Correo: lkj, Contraseña: jj, Nombre: jj, Apellidos: jj
 
-idUser: userfucker, Correo: alfred@hotmail.com, Contraseña: asdasd, Nombre: Alfred, Apellidos: Hitchcock
-
-idUser: idUSeeeeer, Correo: lkjlkj, Contraseña: jjjjj, Nombre: jlkj, Apellidos: lkj
-
-idUser: elusuario, Correo: lkjj, Contraseña: jj, Nombre: lkj, Apellidos: lkj
-
-idUser: cata.greu, Correo: catalin@hotmail.com, Contraseña: lkjlkj, Nombre: jjj, Apellidos: jjj
-
-idUser: lkjlkj, Correo: jlkj, Contraseña: jj, Nombre: lkj, Apellidos: lkj
+idUser: nuevouser, Correo: cata@jojo.com, Contraseña: lkjlkj, Nombre: Catalin, Apellidos: Greuuu
 
 idUser: kjh, Correo: kjh, Contraseña: kjh, Nombre: kjh, Apellidos: kjh
 
-idUser: usuarionuevo, Correo: lkjlkj, Contraseña: jjjjj, Nombre: lkj, Apellidos: ljk
+idUser: jh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
 
-idUser: usuariomaquina, Correo: usuariothebest@hotmail.com, Contraseña: lkjlkj, Nombre: jjj, Apellidos: jjj
+idUser: kjhKjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
 
-idUser: jhkjh, Correo: kjhkhh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
-
-idUser: uuu, Correo: uuu, Contraseña: u, Nombre: u, Apellidos: u
-
-idUser: lkj, Correo: lkj, Contraseña: j, Nombre: lkj, Apellidos: lkj
+idUser: kjh, Correo: kjh, Contraseña: j, Nombre: j, Apellidos: j
 
 idUser: kjh, Correo: kjh, Contraseña: h, Nombre: h, Apellidos: h
 
-idUser: root, Correo: lkj, Contraseña: jj, Nombre: lkj, Apellidos: lkj
+idUser: j, Correo: j, Contraseña: j, Nombre: j, Apellidos: j
 
-idUser: u, Correo: u, Contraseña: u, Nombre: u, Apellidos: u
+idUser: kjhKjhh, Correo: h, Contraseña: h, Nombre: h, Apellidos: h
 
-idUser: asd, Correo: lkj, Contraseña: j, Nombre: j, Apellidos: j
+idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
+
+idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
 

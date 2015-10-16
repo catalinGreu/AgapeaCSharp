@@ -5,6 +5,8 @@ using System.Web;
 using Agapea.App_Code.controladores;
 using Agapea.App_Code.modelos;
 using System.IO;
+using System.Text.RegularExpressions;
+
 namespace Agapea.App_Code.controladores
 {
 
@@ -18,13 +20,13 @@ namespace Agapea.App_Code.controladores
         {
             //int cont = 0;
             string linea;
-            fichero = new StreamReader( HttpContext.Current.Request.MapPath( ruta ) );
+            fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
             lista = new List<Libro>();
 
-            while ( ( linea = fichero.ReadLine()) != null ) 
+            while ((linea = fichero.ReadLine()) != null)
             {
-                
-                string [] elementos = linea.Split ( new char[] { ':' } );
+
+                string[] elementos = linea.Split(new char[] { ':' });
 
                 l = new Libro();
 
@@ -34,18 +36,57 @@ namespace Agapea.App_Code.controladores
                 l.Categoria = elementos[3];
                 l.ISBN10 = elementos[4];
                 l.ISBN13 = elementos[5];
-                l.Precio =  elementos[6];
+                l.Precio = elementos[6];
                 l.NumPag = elementos[7];
                 l.Resumen = elementos[8];
 
                 lista.Add(l);
-                
+
             }
 
             fichero.Close();
 
-            return lista;           
-            
+            return lista;
+
         }
+
+        public List<Libro> findByCategory(List<Libro> lista, string categoria) {
+
+            //fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
+            List<Libro> listaRet = new List<Libro>();
+
+            var resultado = ( from libro in lista                             
+                             where libro.Categoria == categoria
+                             select libro );
+
+
+            //var resultado = (from linea in new StreamReader(HttpContext.Current.Request.MapPath(ruta)).ReadToEnd().Split(new char[] { '\r','\n'}).Where(linea2 => ! new Regex("^$").Match(linea2).Success)
+            //                 let match = linea.Split(new char[] { ':' })[3]
+            //                 where match == categoria
+            //                 select linea );
+
+            //suponiendo que me devuelve una coleccion de strings....
+            foreach (Libro l in resultado)
+            {
+                listaRet.Add(l);
+                //string[] campos = linea.Split(new char[] { ':' });
+                //l = new Libro();
+                //foreach ( string elemento in campos )
+                //{
+                //    l.Titulo = campos.ElementAt(0);
+                //    l.Autor = campos.ElementAt(1);
+                //    l.Editorial = campos.ElementAt(2);
+                //    l.Categoria = campos.ElementAt(3);
+                //    l.ISBN10 = campos.ElementAt(4);
+                //    l.ISBN13 = campos.ElementAt(5);
+                //    l.Precio = campos.ElementAt(6);
+                //    l.NumPag = campos.ElementAt(7);
+                //    l.Resumen = campos.ElementAt(8);
+
+                //    lista.Add(l);
+            }
+            return listaRet;
+        }
+ 
     }
 }

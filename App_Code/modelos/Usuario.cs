@@ -12,5 +12,6 @@ namespace Agapea.App_Code.modelos
         public string Correo { get; set; }
         public string Password { get; set; }
         public string NombreUsuario { get; set; }
+        //public List<string> pedidos() { }
     }
 }

@@ -90,6 +90,7 @@
     <Compile Include="App_Code\controladores\Controlador_Acceso_Ficheros.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Inicio.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Registro.cs" />
+    <Content Include="App_Code\modelos\Cesta.cs" />
     <Compile Include="App_Code\modelos\Libro.cs" />
     <Compile Include="App_Code\modelos\Usuario.cs" />
     <Compile Include="Inicio.aspx.cs">

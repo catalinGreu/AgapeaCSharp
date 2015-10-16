@@ -12,14 +12,18 @@ namespace Agapea
     {
 
         private Controlador_Vista_Inicio __controlInit;
+        private string __categoriaPulsada;
 
         protected void Page_Load(object sender, EventArgs e)
 
         {
+            __controlInit = new Controlador_Vista_Inicio();
+            List<Libro> librosFichero = new List<Libro>();
+
             this.LabelUser.Text = (string) this.Request.QueryString["Usuario"];
 
 
-            if (Session["Usuario"] != null)
+            if ( Session["Usuario"] != null )
             {
                 var nombreUser = (string)Session["Usuario"];
                 this.LabelUser.Text = nombreUser;
@@ -30,10 +34,10 @@ namespace Agapea
             }
           
             ///---llamada a procedimiento interno para ver variables post
-
             mostrar();
+
             if (this.IsPostBack)
-            {
+            {//si quiero comprobar que botones se pulsan siempre necesitare un isPostBack.
 
                 foreach (string clave in this.Request.Params.AllKeys)
                 {
@@ -41,17 +45,19 @@ namespace Agapea
                     {
                         this.LabelUser.Text = "HAS PULSADO EL BOTON!!";
                     }
-                    //else if (clave == "_EVENTTARGET" && this.Request.Params[clave] == this.TreeView.id)
-                    //{
-                    //    this.LabelUser.Text = "has seleccionado el nodo treeview: " + this.Request.Params["_EVENTARGUMENT"].ToString();
-                    //}
+                    else if (clave == "__EVENTTARGET" && this.Request.Params[clave] == this.myTreeView.ID)
+                    {
+                        //si seleccion algo del treeView asigno la categoría a la variable
+                        this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[1];
+                        this.LabelUser.Text = "has seleccionado el nodo treeview: " + __categoriaPulsada;
+                        //metodo que devuelve libros con categorías....
+                        __controlInit.findByCategory( librosFichero, __categoriaPulsada );
+                    }
                 }
 
             }
 
-            __controlInit = new Controlador_Vista_Inicio();
-
-            List<Libro> librosFichero = new List<Libro>();
+            
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
             //Devuelve una lista de libros...con sus atributos cargados.
             TableCell cell;
@@ -60,17 +66,20 @@ namespace Agapea
             int librosRestantes = librosFichero.Count % 4;
             int filas = librosTotales / 4;
 
+            tablaLibros.Style.Add(HtmlTextWriterStyle.TextAlign, "justify");
+            
             for (int i = 0; i < filas; i++)//quiero 4 libros por fila
             {
                 row = new TableRow();
                 tablaLibros.Rows.Add(row);
-
                 for (int j = 0; j < 4; j++)
                 {
                     cell = new TableCell();
-                    cell.ControlStyle.BorderColor = System.Drawing.Color.Black;
                     cell.Style.Add("padding", "10px");
-
+                    cell.Style.Add("width", "200px");
+                    //cell.ControlStyle.Width = Unit.Pixel(300);
+                    //cell.Style.Add(HtmlTextWriterStyle., "200px");
+                   
                     Libro l = librosFichero.ElementAt((i * 4) + j);
 
                     rellenaColumna(cell, l, row);
@@ -84,22 +93,19 @@ namespace Agapea
                 var fin = librosTotales - 1; //posiciones del array
                 row = new TableRow();
                 tablaLibros.Rows.Add(row);
+
                 for (int k = inicio; k <= fin; k++)
                 {
                     cell = new TableCell();
-                    cell.ControlStyle.BorderColor = System.Drawing.Color.Black;
                     cell.Style.Add("padding", "10px");
-                    cell.Style.Add("height", "100px");
-                    cell.Style.Add("width", "100px");
+                    //cell.ControlStyle.Width = Unit.Pixel(300);
+
                     Libro l = librosFichero.ElementAt(k);
                     rellenaColumna(cell, l, row);
                 }
-
-
             }
-
-
         }
+
             public void rellenaColumna(TableCell cell, Libro l, TableRow row) {
 
             cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });

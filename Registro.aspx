@@ -181,7 +181,7 @@
                         <tr>
                             <td class="auto-style24">&nbsp;</td>
                             <td>
-                                <asp:Label ID="labelConfirm" runat="server" Enabled="False" Text="Datos guardados correctamente" ViewStateMode="Disabled"></asp:Label>
+                                <asp:Label ID="labelConfirm" runat="server" Enabled="False" ViewStateMode="Disabled"></asp:Label>
                             </td>
                         </tr>
                         
