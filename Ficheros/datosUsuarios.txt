@@ -20,3 +20,25 @@ idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
 
 idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
 
+idUser: userlooser, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
+
+idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: h, Apellidos: h
+
+idUser: catalin, Correo: jj, Contraseña: jj, Nombre: jj, Apellidos: jj
+
+idUser: kjh, Correo: kjh, Contraseña: h, Nombre: h, Apellidos: h
+
+idUser: kjh, Correo: h, Contraseña: h, Nombre: h, Apellidos: h
+
+idUser: puto, Correo: gili, Contraseña: pollas, Nombre: lkj, Apellidos: lkj
+
+idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kh
+
+idUser: jhg, Correo: jhg, Contraseña: gg, Nombre: jhg, Apellidos: jhg+
+
+idUser: catalin, Correo: cata@gmail.com, Contraseña: asdasd, Nombre: Catalinnnn, Apellidos: Greu
+
+idUser: jhg, Correo: jhg, Contraseña: gg, Nombre: jhg, Apellidos: jhg
+
+idUser: kjh, Correo: kjh, Contraseña: hh, Nombre: kjh, Apellidos: kjh
+

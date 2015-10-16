@@ -13,17 +13,16 @@ namespace Agapea
 
         private Controlador_Vista_Inicio __controlInit;
         private string __categoriaPulsada;
-
+        private List<Libro> librosFichero;
         protected void Page_Load(object sender, EventArgs e)
 
         {
             __controlInit = new Controlador_Vista_Inicio();
-            List<Libro> librosFichero = new List<Libro>();
+            
+            librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
 
-            this.LabelUser.Text = (string) this.Request.QueryString["Usuario"];
-
-
-            if ( Session["Usuario"] != null )
+            #region "sesionUser"
+            if (Session["Usuario"] != null)
             {
                 var nombreUser = (string)Session["Usuario"];
                 this.LabelUser.Text = nombreUser;
@@ -32,9 +31,13 @@ namespace Agapea
             {
                 this.LabelUser.Text = "Parece que el nombre no se almacena bien";
             }
-          
+
             ///---llamada a procedimiento interno para ver variables post
             mostrar();
+            #endregion
+
+
+            #region "isPostback"
 
             if (this.IsPostBack)
             {//si quiero comprobar que botones se pulsan siempre necesitare un isPostBack.
@@ -51,62 +54,99 @@ namespace Agapea
                         this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[1];
                         this.LabelUser.Text = "has seleccionado el nodo treeview: " + __categoriaPulsada;
                         //metodo que devuelve libros con categorías....
-                        __controlInit.findByCategory( librosFichero, __categoriaPulsada );
+
+                        if (__categoriaPulsada == "Todos" )
+                        {
+                            rellenaTabla(librosFichero, false);//nofunciona
+                        }
+                        List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
+                        tablaLibros.Rows.Clear();
+                        rellenaTabla( categoryList, true );
                     }
                 }
 
             }
+            #endregion
+            if ( !this.IsPostBack )
+            {
+                rellenaTabla(librosFichero, false);
+            }
+           
 
-            
-            librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
+           
             //Devuelve una lista de libros...con sus atributos cargados.
+           
+        }
+
+        private void rellenaTabla(List<Libro> libros, bool porCategoria)
+        {
             TableCell cell;
             TableRow row;
-            int librosTotales = librosFichero.Count;
-            int librosRestantes = librosFichero.Count % 4;
+            int librosTotales = libros.Count;
+            int librosRestantes = libros.Count % 4;
             int filas = librosTotales / 4;
 
             tablaLibros.Style.Add(HtmlTextWriterStyle.TextAlign, "justify");
-            
-            for (int i = 0; i < filas; i++)//quiero 4 libros por fila
+
+            if ( !porCategoria )
             {
-                row = new TableRow();
-                tablaLibros.Rows.Add(row);
-                for (int j = 0; j < 4; j++)
+                for (int i = 0; i < filas; i++)//quiero 4 libros por fila
                 {
-                    cell = new TableCell();
-                    cell.Style.Add("padding", "10px");
-                    cell.Style.Add("width", "200px");
-                    //cell.ControlStyle.Width = Unit.Pixel(300);
-                    //cell.Style.Add(HtmlTextWriterStyle., "200px");
-                   
-                    Libro l = librosFichero.ElementAt((i * 4) + j);
+                    row = new TableRow();
+                    tablaLibros.Rows.Add(row);
+                    for (int j = 0; j < 4; j++)
+                    {
+                        cell = new TableCell();
+                        cell.Style.Add("padding", "10px");
+                        cell.Style.Add("width", "200px");
+                        //cell.ControlStyle.Width = Unit.Pixel(300);
+                        //cell.Style.Add(HtmlTextWriterStyle., "200px");
 
-                    rellenaColumna(cell, l, row);
-                }               
+                        Libro l = libros.ElementAt((i * 4) + j);
 
-            }
-            //una vez aqui, faltan libros. Cuantos? ---> librosRestantes
-            if (librosRestantes != 0) //---> significa que quedan libros
-            {
-                var inicio = librosTotales - librosRestantes;
-                var fin = librosTotales - 1; //posiciones del array
-                row = new TableRow();
-                tablaLibros.Rows.Add(row);
+                        rellenaColumna(cell, l, row);
+                    }
 
-                for (int k = inicio; k <= fin; k++)
+                }
+                //una vez aqui, faltan libros. Cuantos? ---> librosRestantes
+                if (librosRestantes != 0) //---> significa que quedan libros
                 {
-                    cell = new TableCell();
-                    cell.Style.Add("padding", "10px");
-                    //cell.ControlStyle.Width = Unit.Pixel(300);
+                    var inicio = librosTotales - librosRestantes;
+                    var fin = librosTotales - 1; //posiciones del array
+                    row = new TableRow();
+                    tablaLibros.Rows.Add(row);
 
-                    Libro l = librosFichero.ElementAt(k);
-                    rellenaColumna(cell, l, row);
+                    for (int k = inicio; k <= fin; k++)
+                    {
+                        cell = new TableCell();
+                        cell.Style.Add("padding", "10px");
+                        //cell.ControlStyle.Width = Unit.Pixel(300);
+
+                        Libro l = libros.ElementAt(k);
+                        rellenaColumna(cell, l, row);
+                    }
                 }
             }
+            else if( porCategoria )
+            {
+               // tablaLibros.Rows.Clear();
+                TableRow r = new TableRow();
+                tablaLibros.Rows.Add( r );
+                TableCell c;
+                
+                foreach ( Libro lib in libros )
+                {
+                    c = new TableCell();
+                    c.Style.Add("padding", "10px");
+                    c.Style.Add("width", "200px");
+                    rellenaColumna(c, lib, r);
+                }
+            }
+            //throw new NotImplementedException();
         }
 
-            public void rellenaColumna(TableCell cell, Libro l, TableRow row) {
+        
+        public void rellenaColumna( TableCell cell, Libro l, TableRow row ) {
 
             cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });
             cell.Controls.Add(new Label { Text = "Autor: " + l.Autor + "\n" });
@@ -122,6 +162,7 @@ namespace Agapea
             row.Cells.Add(cell);
 
         }
+
         private void mostrar()
         {
             string mensaje = "";

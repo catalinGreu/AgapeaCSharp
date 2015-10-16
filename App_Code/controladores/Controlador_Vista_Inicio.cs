@@ -52,12 +52,13 @@ namespace Agapea.App_Code.controladores
 
         public List<Libro> findByCategory(List<Libro> lista, string categoria) {
 
-            //fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
+            int comprobacion = lista.Count;
+     
             List<Libro> listaRet = new List<Libro>();
 
-            var resultado = ( from libro in lista                             
+            var resultado =  from libro in lista                            
                              where libro.Categoria == categoria
-                             select libro );
+                             select libro;
 
 
             //var resultado = (from linea in new StreamReader(HttpContext.Current.Request.MapPath(ruta)).ReadToEnd().Split(new char[] { '\r','\n'}).Where(linea2 => ! new Regex("^$").Match(linea2).Success)
@@ -69,21 +70,7 @@ namespace Agapea.App_Code.controladores
             foreach (Libro l in resultado)
             {
                 listaRet.Add(l);
-                //string[] campos = linea.Split(new char[] { ':' });
-                //l = new Libro();
-                //foreach ( string elemento in campos )
-                //{
-                //    l.Titulo = campos.ElementAt(0);
-                //    l.Autor = campos.ElementAt(1);
-                //    l.Editorial = campos.ElementAt(2);
-                //    l.Categoria = campos.ElementAt(3);
-                //    l.ISBN10 = campos.ElementAt(4);
-                //    l.ISBN13 = campos.ElementAt(5);
-                //    l.Precio = campos.ElementAt(6);
-                //    l.NumPag = campos.ElementAt(7);
-                //    l.Resumen = campos.ElementAt(8);
-
-                //    lista.Add(l);
+              
             }
             return listaRet;
         }

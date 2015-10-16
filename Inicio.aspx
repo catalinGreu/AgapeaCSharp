@@ -15,10 +15,13 @@
         }
         .auto-style3 {
             height: 358px;
-            width: 120px;
+            width: 1px;
         }
         .auto-style4 {
             height: 38px;
+        }
+        .auto-style5 {
+            margin-left: 0px;
         }
     </style>
 </head>
@@ -34,8 +37,7 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-                    <asp:TreeView ID="myTreeView" runat="server" Height="254px" ImageSet="BulletedList" Width="199px" ShowExpandCollapse="False">
-                        <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                    <asp:TreeView ID="myTreeView" runat="server" Height="337px" Width="199px" BorderStyle="Ridge" Font-Names="Arial" Font-Size="Large" Font-Strikeout="False" Font-Underline="True" ForeColor="Black">
                         <Nodes>
                             <asp:TreeNode Text="Categorias" Value="Categorias">
                                 <asp:TreeNode Text="Aventuras" Value="Aventuras"></asp:TreeNode>
@@ -43,16 +45,14 @@
                                 <asp:TreeNode Text="Academico" Value="Academico"></asp:TreeNode>
                                 <asp:TreeNode Text="Historia" Value="Historia"></asp:TreeNode>
                                 <asp:TreeNode Text="Autoayuda" Value="Autoayuda"></asp:TreeNode>
+                                <asp:TreeNode Text="Todos" Value="Todos"></asp:TreeNode>
                             </asp:TreeNode>
                         </Nodes>
-                        <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                        <ParentNodeStyle Font-Bold="False" />
                         <RootNodeStyle BackColor="#6666FF" />
-                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
                     </asp:TreeView>
                 </td>
                 <td class="auto-style2">
-                    <asp:Table ID="tablaLibros" runat="server" Height="299px" Width="607px">
+                    <asp:Table ID="tablaLibros" runat="server" Height="299px" Width="607px" CssClass="auto-style5">
                     </asp:Table>
                 </td>
             </tr>
