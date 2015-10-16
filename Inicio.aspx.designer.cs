@@ -31,13 +31,13 @@ namespace Agapea {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// TreeView1 control.
+        /// treeView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TreeView1;
+        protected global::System.Web.UI.WebControls.TreeView treeView;
         
         /// <summary>
         /// tablaLibros control.
@@ -47,15 +47,6 @@ namespace Agapea {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tablaLibros;
-        
-        /// <summary>
-        /// LabelUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUser;
         
         /// <summary>
         /// TextBox1 control.
@@ -74,6 +65,15 @@ namespace Agapea {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCompra;
+        
+        /// <summary>
+        /// LabelUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUser;
         
         /// <summary>
         /// Image2 control.

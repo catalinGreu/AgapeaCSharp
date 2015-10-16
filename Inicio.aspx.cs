@@ -16,7 +16,19 @@ namespace Agapea
         protected void Page_Load(object sender, EventArgs e)
 
         {
-            this.LabelUser.Text = (string)this.Request.QueryString["Usuario"];
+            this.LabelUser.Text = (string) this.Request.QueryString["Usuario"];
+
+
+            if (Session["Usuario"] != null)
+            {
+                var nombreUser = (string)Session["Usuario"];
+                this.LabelUser.Text = nombreUser;
+            }
+            else
+            {
+                this.LabelUser.Text = "Parece que el nombre no se almacena bien";
+            }
+          
             ///---llamada a procedimiento interno para ver variables post
 
             mostrar();
@@ -45,37 +57,48 @@ namespace Agapea
             TableCell cell;
             TableRow row;
             int librosTotales = librosFichero.Count;
-            double filasNecesarias = librosFichero.Count / 3;
-            int filas = (int)Math.Ceiling(filasNecesarias);
+            int librosRestantes = librosFichero.Count % 4;
+            int filas = librosTotales / 4;
 
-            for (int i = 0; i < filas; i++)//quiero 3 libros por fila
+            for (int i = 0; i < filas; i++)//quiero 4 libros por fila
             {
                 row = new TableRow();
                 tablaLibros.Rows.Add(row);
 
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     cell = new TableCell();
                     cell.ControlStyle.BorderColor = System.Drawing.Color.Black;
                     cell.Style.Add("padding", "10px");
 
-                    Libro l = librosFichero.ElementAt((i * 3) + j);
+                    Libro l = librosFichero.ElementAt((i * 4) + j);
 
-                    rellenaColumna(cell, l, row);                   
-
-                    librosTotales--;
-                    if ( librosTotales == 1 )
-                    {
-                        row = new TableRow();
-                        tablaLibros.Rows.Add(row);
-                        cell = new TableCell();
-                        Libro lib = librosFichero.ElementAt(librosFichero.Count-1);
-                        rellenaColumna(cell, lib, row);
-                    }
-
-                }
+                    rellenaColumna(cell, l, row);
+                }               
 
             }
+            //una vez aqui, faltan libros. Cuantos? ---> librosRestantes
+            if (librosRestantes != 0) //---> significa que quedan libros
+            {
+                var inicio = librosTotales - librosRestantes;
+                var fin = librosTotales - 1; //posiciones del array
+                row = new TableRow();
+                tablaLibros.Rows.Add(row);
+                for (int k = inicio; k <= fin; k++)
+                {
+                    cell = new TableCell();
+                    cell.ControlStyle.BorderColor = System.Drawing.Color.Black;
+                    cell.Style.Add("padding", "10px");
+                    cell.Style.Add("height", "100px");
+                    cell.Style.Add("width", "100px");
+                    Libro l = librosFichero.ElementAt(k);
+                    rellenaColumna(cell, l, row);
+                }
+
+
+            }
+
+
         }
             public void rellenaColumna(TableCell cell, Libro l, TableRow row) {
 
@@ -88,6 +111,7 @@ namespace Agapea
             cell.Controls.Add(new Label { Text = "Precio: " + l.Precio + "\n" });
             cell.Controls.Add(new Label { Text = "Paginas: " + l.NumPag + "\n" });
             cell.Controls.Add(new Label { Text = "Resumen: " + l.Resumen + "\n" });
+            cell.Controls.Add(new Button { Text = "Al carro" });
 
             row.Cells.Add(cell);
 

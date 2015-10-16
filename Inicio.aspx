@@ -15,7 +15,7 @@
         }
         .auto-style3 {
             height: 358px;
-            width: 215px;
+            width: 120px;
         }
         .auto-style4 {
             height: 38px;
@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-                    <asp:TreeView ID="TreeView1" runat="server">
+                    <asp:TreeView ID="treeView" runat="server" Height="175px" ImageSet="BulletedList2" Width="186px">
                     </asp:TreeView>
                 </td>
                 <td class="auto-style2">
@@ -44,9 +44,9 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Label ID="LabelUser" runat="server"></asp:Label>
                     <asp:TextBox ID="TextBox1" runat="server" Height="235px" TextMode="MultiLine" Width="547px" EnableViewState="False"></asp:TextBox>
                     <asp:Button ID="ButtonCompra" runat="server" Text="Comprar" />
+                    <asp:Label ID="LabelUser" runat="server"></asp:Label>
                     <asp:Image ID="Image2" runat="server" ImageUrl="~/imagenes/pie.png" />
                 </td>
             </tr>
