@@ -4,4 +4,3 @@ Programar en C# en 1 dia:Pablo:KJHG:Academico:1234564310:1234567891238:30:1200:E
 Don Quijote:Cervantes:SpanishED:Historia:1234769890:1234567891236:40:820 Resumen:En un lugar de la mancha....etc.
 MiTitulo2:AndrewThrows:CANAYA:Aventuras:1234567890:1234567891234:60:120:Una historia muy chachi.
 Inferno3:DanBrown:DeBolsillo:Thriller:1238136789:1234567891235:20.50:570:Misterio sin resolver en Florencia.
-Programar3 en C# en 1 dia:Pablo:KJHG:Academico:1234564310:1234567891238:30:1200:Es mentira, no se puede aprender en un día.

@@ -36,6 +36,7 @@ namespace Agapea.App_Code.controladores
                 l.Categoria = elementos[3];
                 l.ISBN10 = elementos[4];
                 l.ISBN13 = elementos[5];
+                //l.Precio = decimal.Parse(elementos[6]);//esto la ultima vez no iba.
                 l.Precio = elementos[6];
                 l.NumPag = elementos[7];
                 l.Resumen = elementos[8];

@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MaestraVistasPrincipales.master.cs" Inherits="Agapea.Paginas_Maestras.MaestraVistasPrincipales" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="cabecera">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/imagenes/cabecera.png" />
+        </div>
+        <div id="panelLateral" style="float:left;width:20%">
+            <asp:TreeView ID="myTreeView" runat="server">
+            </asp:TreeView>
+        </div>
+    <div id="contenidoDinamico" style="float:right;width:80%">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+        <div id="pie">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/imagenes/pie.png" />
+        </div>
+    </form>
+</body>
+</html>

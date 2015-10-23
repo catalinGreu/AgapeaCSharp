@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agapea.App_Code.controladores;
 using Agapea.App_Code.modelos;
+using Agapea.App_Code.Controles_Personalizados;
 namespace Agapea
 {
     public partial class Inicio : System.Web.UI.Page
@@ -14,11 +15,15 @@ namespace Agapea
         private Controlador_Vista_Inicio __controlInit;
         private string __categoriaPulsada;
         private List<Libro> librosFichero;
+        //MiniControlLibro __micontrol;
         protected void Page_Load(object sender, EventArgs e)
 
-        {
+        {          
+
             __controlInit = new Controlador_Vista_Inicio();
+
             
+
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
 
             #region "sesionUser"
@@ -57,10 +62,10 @@ namespace Agapea
 
                         if (__categoriaPulsada == "Todos" )
                         {
-                            rellenaTabla(librosFichero, false);//nofunciona
+                            rellenaTabla(librosFichero, false);//nofunciona--no iba porq vaciaba la tabla
                         }
                         List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
-                        tablaLibros.Rows.Clear();
+                        //tablaLibros.Rows.Clear();//vacio tabla
                         rellenaTabla( categoryList, true );
                     }
                 }
@@ -69,24 +74,24 @@ namespace Agapea
             #endregion
             if ( !this.IsPostBack )
             {
-                rellenaTabla(librosFichero, false);
-            }
-           
+                rellenaTabla( librosFichero, false );
+            } 
 
            
             //Devuelve una lista de libros...con sus atributos cargados.
            
         }
 
-        private void rellenaTabla(List<Libro> libros, bool porCategoria)
+        private void rellenaTabla( List<Libro> libros, bool porCategoria )
         {
+            
             TableCell cell;
             TableRow row;
             int librosTotales = libros.Count;
-            int librosRestantes = libros.Count % 4;
-            int filas = librosTotales / 4;
+            int librosRestantes = libros.Count % 3;
+            int filas = librosTotales / 3;
 
-            tablaLibros.Style.Add(HtmlTextWriterStyle.TextAlign, "justify");
+            //tablaLibros.Style.Add(HtmlTextWriterStyle.TextAlign, "justify");
 
             if ( !porCategoria )
             {
@@ -94,15 +99,19 @@ namespace Agapea
                 {
                     row = new TableRow();
                     tablaLibros.Rows.Add(row);
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j < 3; j++)
                     {
                         cell = new TableCell();
+                        cell.BorderColor = System.Drawing.Color.Black;
+                        cell.Height=100;
+                        cell.Width = 300;
+
                         cell.Style.Add("padding", "10px");
-                        cell.Style.Add("width", "200px");
+                        
                         //cell.ControlStyle.Width = Unit.Pixel(300);
                         //cell.Style.Add(HtmlTextWriterStyle., "200px");
 
-                        Libro l = libros.ElementAt((i * 4) + j);
+                        Libro l = libros.ElementAt((i * 3) + j);
 
                         rellenaColumna(cell, l, row);
                     }
@@ -138,7 +147,8 @@ namespace Agapea
                 {
                     c = new TableCell();
                     c.Style.Add("padding", "10px");
-                    c.Style.Add("width", "200px");
+                    //c.Style.Add("width", "200px");
+                    
                     rellenaColumna(c, lib, r);
                 }
             }
@@ -148,21 +158,31 @@ namespace Agapea
         
         public void rellenaColumna( TableCell cell, Libro l, TableRow row ) {
 
-            cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });
-            cell.Controls.Add(new Label { Text = "Autor: " + l.Autor + "\n" });
-            cell.Controls.Add(new Label { Text = "Editorial: " + l.Editorial + "\n" });
-            cell.Controls.Add(new Label { Text = "Categoria: " + l.Categoria + "\n" });
-            cell.Controls.Add(new Label { Text = "ISBN-10: " + l.ISBN10 + "\n" });
-            cell.Controls.Add(new Label { Text = "ISBN-13: " + l.ISBN13 + "\n" });
-            cell.Controls.Add(new Label { Text = "Precio: " + l.Precio + "\n" });
-            cell.Controls.Add(new Label { Text = "Paginas: " + l.NumPag + "\n" });
-            cell.Controls.Add(new Label { Text = "Resumen: " + l.Resumen + "\n" });
-            cell.Controls.Add(new Button { Text = "Al carro" });
+            MiniControlLibro __micontrol = (MiniControlLibro)Page.LoadControl(("~/Controles_Personalizados/MiniControlLibro.ascx"));
+            __micontrol.TituloControl = l.Titulo;
+            __micontrol.EditorialControl = l.Editorial;
+            __micontrol.AutorControl = l.Autor;
+            __micontrol.PrecioControl = l.Precio;
+            __micontrol.ISBNControl = l.ISBN10;
+
+            cell.Controls.Add( __micontrol );
+
+            //cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });
+            //cell.Controls.Add(new Label { Text = "Autor: " + l.Autor + "\n" });
+            //cell.Controls.Add(new Label { Text = "Editorial: " + l.Editorial + "\n" });
+            //cell.Controls.Add(new Label { Text = "Categoria: " + l.Categoria + "\n" });
+            //cell.Controls.Add(new Label { Text = "ISBN-10: " + l.ISBN10 + "\n" });
+            //cell.Controls.Add(new Label { Text = "ISBN-13: " + l.ISBN13 + "\n" });
+            //cell.Controls.Add(new Label { Text = "Precio: " + l.Precio + "\n" });
+            //cell.Controls.Add(new Label { Text = "Paginas: " + l.NumPag + "\n" });
+            //cell.Controls.Add(new Label { Text = "Resumen: " + l.Resumen + "\n" });
+            //cell.Controls.Add(new Button { Text = "Al carro" });
 
             row.Cells.Add(cell);
 
         }
 
+       
         private void mostrar()
         {
             string mensaje = "";
