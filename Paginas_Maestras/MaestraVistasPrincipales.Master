@@ -7,6 +7,13 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            float: right;
+            width: 80%;
+            height: 146px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -17,8 +24,11 @@
             <asp:TreeView ID="myTreeView" runat="server">
             </asp:TreeView>
         </div>
-    <div id="contenidoDinamico" style="float:right;width:80%">
+    <div id="contenidoDinamico" class="auto-style1">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            <asp:Table ID="tablaLibros" runat="server" Height="138px" Width="603px">
+            </asp:Table>
         
         </asp:ContentPlaceHolder>
     </div>

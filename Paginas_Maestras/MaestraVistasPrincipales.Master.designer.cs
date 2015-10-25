@@ -58,6 +58,15 @@ namespace Agapea.Paginas_Maestras {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
+        /// tablaLibros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tablaLibros;
+        
+        /// <summary>
         /// Image2 control.
         /// </summary>
         /// <remarks>

@@ -15,6 +15,7 @@ namespace Agapea
         private Controlador_Vista_Inicio __controlInit;
         private string __categoriaPulsada;
         private List<Libro> librosFichero;
+        private const string __rutaControl = "~/Controles_Personalizados/MiniControlLibro.ascx";
         //MiniControlLibro __micontrol;
         protected void Page_Load(object sender, EventArgs e)
 
@@ -65,7 +66,6 @@ namespace Agapea
                             rellenaTabla(librosFichero, false);//nofunciona--no iba porq vaciaba la tabla
                         }
                         List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
-                        //tablaLibros.Rows.Clear();//vacio tabla
                         rellenaTabla( categoryList, true );
                     }
                 }
@@ -129,7 +129,6 @@ namespace Agapea
                     {
                         cell = new TableCell();
                         cell.Style.Add("padding", "10px");
-                        //cell.ControlStyle.Width = Unit.Pixel(300);
 
                         Libro l = libros.ElementAt(k);
                         rellenaColumna(cell, l, row);
@@ -138,7 +137,6 @@ namespace Agapea
             }
             else if( porCategoria )
             {
-               // tablaLibros.Rows.Clear();
                 TableRow r = new TableRow();
                 tablaLibros.Rows.Add( r );
                 TableCell c;
@@ -147,18 +145,16 @@ namespace Agapea
                 {
                     c = new TableCell();
                     c.Style.Add("padding", "10px");
-                    //c.Style.Add("width", "200px");
                     
                     rellenaColumna(c, lib, r);
                 }
             }
-            //throw new NotImplementedException();
         }
 
         
         public void rellenaColumna( TableCell cell, Libro l, TableRow row ) {
 
-            MiniControlLibro __micontrol = (MiniControlLibro)Page.LoadControl(("~/Controles_Personalizados/MiniControlLibro.ascx"));
+            MiniControlLibro __micontrol = ( MiniControlLibro ) Page.LoadControl((__rutaControl ));
             __micontrol.TituloControl = l.Titulo;
             __micontrol.EditorialControl = l.Editorial;
             __micontrol.AutorControl = l.Autor;
