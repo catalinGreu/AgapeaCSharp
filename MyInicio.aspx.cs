@@ -8,32 +8,32 @@ using Agapea.App_Code.controladores;
 using Agapea.App_Code.modelos;
 using Agapea.App_Code.Controles_Personalizados;
 
+
 namespace Agapea
 {
-    public partial class Index : System.Web.UI.Page
+    public partial class MyInicio : System.Web.UI.Page
     {
         private Controlador_Vista_Inicio __controlInit;
         private string __categoriaPulsada;
         private List<Libro> librosFichero;
-        //MiniControlLibro __micontrol;
+        private const string __rutaControl = "~/Controles_Personalizados/MiniControlLibro.ascx";
         protected void Page_Load(object sender, EventArgs e)
         {
-            TreeView arbol = (TreeView)this.Master.FindControl("myTreeView");
-            Table tablaLibros = (Table)this.Master.FindControl("tablaLibros");
-            Label LabelUser = (Label)this.Master.FindControl("LabelUser");
-
-            arbol.Nodes.Add(new TreeNode("Categorias"));
+            ImageButton ButtonCompra = (ImageButton) this.Master.FindControl("ButtonCompra");
+            Label LabelUser = (Label) this.Master.FindControl("LabelUser");
+            TreeView myTreeView = (TreeView) this.Master.FindControl("myTreeView");
+           
             __controlInit = new Controlador_Vista_Inicio();
 
 
 
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
 
+            cargaTree(myTreeView, librosFichero);
             #region "sesionUser"
-            if (Session["Usuario"] != null)
+            if (this.Session["Usuario"] != null)
             {
-                var nombreUser = (string)Session["Usuario"];
-                LabelUser.Text = nombreUser;
+                LabelUser.Text = (string) Session["Usuario"];
             }
             else
             {
@@ -41,7 +41,7 @@ namespace Agapea
             }
 
             ///---llamada a procedimiento interno para ver variables post
-            mostrar();
+           
             #endregion
 
 
@@ -52,11 +52,11 @@ namespace Agapea
 
                 foreach (string clave in this.Request.Params.AllKeys)
                 {
-                    if (clave == this.ButtonCompra.ID)
+                    if (clave == ButtonCompra.ID)
                     {
                         LabelUser.Text = "HAS PULSADO EL BOTON!!";
                     }
-                    else if (clave == "__EVENTTARGET" && this.Request.Params[clave] == this.myTreeView.ID)
+                    else if (clave == "__EVENTTARGET" && this.Request.Params[clave] == myTreeView.ID)
                     {
                         //si seleccion algo del treeView asigno la categoría a la variable
                         this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[1];
@@ -68,7 +68,6 @@ namespace Agapea
                             rellenaTabla(librosFichero, false);//nofunciona--no iba porq vaciaba la tabla
                         }
                         List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
-                        //tablaLibros.Rows.Clear();//vacio tabla
                         rellenaTabla(categoryList, true);
                     }
                 }
@@ -101,7 +100,7 @@ namespace Agapea
                 for (int i = 0; i < filas; i++)//quiero 4 libros por fila
                 {
                     row = new TableRow();
-                    tablaLibros.Rows.Add(row);
+                    this.tablaLibros.Rows.Add(row);
                     for (int j = 0; j < 3; j++)
                     {
                         cell = new TableCell();
@@ -126,13 +125,12 @@ namespace Agapea
                     var inicio = librosTotales - librosRestantes;
                     var fin = librosTotales - 1; //posiciones del array
                     row = new TableRow();
-                    tablaLibros.Rows.Add(row);
+                    this.tablaLibros.Rows.Add(row);
 
-                    for (int k = inicio; k <= fin; k++)
+                    for ( int k = inicio; k <= fin; k++ )
                     {
                         cell = new TableCell();
                         cell.Style.Add("padding", "10px");
-                        //cell.ControlStyle.Width = Unit.Pixel(300);
 
                         Libro l = libros.ElementAt(k);
                         rellenaColumna(cell, l, row);
@@ -141,28 +139,25 @@ namespace Agapea
             }
             else if (porCategoria)
             {
-                // tablaLibros.Rows.Clear();
                 TableRow r = new TableRow();
-                tablaLibros.Rows.Add(r);
+                this.tablaLibros.Rows.Add(r);
                 TableCell c;
 
                 foreach (Libro lib in libros)
                 {
                     c = new TableCell();
                     c.Style.Add("padding", "10px");
-                    //c.Style.Add("width", "200px");
 
                     rellenaColumna(c, lib, r);
                 }
             }
-            //throw new NotImplementedException();
         }
 
 
         public void rellenaColumna(TableCell cell, Libro l, TableRow row)
         {
 
-            MiniControlLibro __micontrol = (MiniControlLibro)Page.LoadControl(("~/Controles_Personalizados/MiniControlLibro.ascx"));
+            MiniControlLibro __micontrol = (MiniControlLibro)Page.LoadControl((__rutaControl));
             __micontrol.TituloControl = l.Titulo;
             __micontrol.EditorialControl = l.Editorial;
             __micontrol.AutorControl = l.Autor;
@@ -186,18 +181,16 @@ namespace Agapea
 
         }
 
-
-        private void mostrar()
+        public void cargaTree( TreeView t, List<Libro> lista )
         {
-            string mensaje = "";
-            foreach (string clave in this.Request.Params.Keys)
+            foreach (Libro l in lista)
             {
-                mensaje += "clave:_" + clave + " -------valor:_" +
-                    this.Request.Params[clave].ToString() + "\n";
+                t.Nodes.Add(new TreeNode( l.Categoria, l.Categoria ));
             }
-            this.TextBox1.Text = mensaje;
+            
+            
         }
+
+        
     }
-}
-    }
-}
+   }

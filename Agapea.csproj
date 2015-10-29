@@ -70,9 +70,13 @@
     <Content Include="Controles_Personalizados\MiniControlLibro.ascx" />
     <Content Include="Ficheros\datosUsuarios.txt" />
     <Content Include="Ficheros\libros.txt" />
+    <Content Include="imagenes\btnBuscar.png" />
+    <Content Include="imagenes\btnComprar.png" />
+    <Content Include="imagenes\iconLibro.png" />
+    <Content Include="imagenes\nuestrasLibrerias.png" />
     <Content Include="imagenes\pie.png" />
-    <Content Include="InicioMaster.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="MyInicio.aspx" />
     <Content Include="packages.config" />
     <Content Include="Paginas_Maestras\MaestraVistasPrincipales.Master" />
     <None Include="Web.Debug.config">
@@ -103,19 +107,19 @@
     </Compile>
     <Compile Include="App_Code\modelos\Libro.cs" />
     <Compile Include="App_Code\modelos\Usuario.cs" />
-    <Compile Include="InicioMaster.aspx.cs">
-      <DependentUpon>InicioMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="InicioMaster.aspx.designer.cs">
-      <DependentUpon>InicioMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyInicio.aspx.cs">
+      <DependentUpon>MyInicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyInicio.aspx.designer.cs">
+      <DependentUpon>MyInicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas_Maestras\MaestraVistasPrincipales.Master.cs">
       <DependentUpon>MaestraVistasPrincipales.Master</DependentUpon>

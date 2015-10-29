@@ -8,32 +8,74 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
-        .auto-style1 {
+        .auto-style2 {
+            height: 23px;
+        }
+        .auto-style3 {
+            height: 23px;
+            width: 583px;
+        }
+        .auto-style4 {
+            width: 583px;
+        }
+        .auto-style5 {
+            width: 133%;
+        }
+        .auto-style6 {
             float: right;
-            width: 80%;
-            height: 146px;
+            height: 268px;
+            width: 369px;
+        }
+        .auto-style7 {
+            float: left;
+            height: 69px;
+            width: 164px;
         }
     </style>
-</head>
+    </head>
 <body>
     <form id="form1" runat="server">
         <div id="cabecera">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/imagenes/cabecera.png" />
         </div>
+       
+            
+            <table class="auto-style5">
+                <tr>
+                    <td class="auto-style3">
+                        <asp:TextBox ID="TextBox1" runat="server" Height="24px" Width="635px"></asp:TextBox>
+                    </td>
+                    <td class="auto-style2">
+                        <asp:ImageButton ID="ButtonCompra" runat="server" ImageUrl="~/imagenes/btnBuscar.png" />
+                    &nbsp;Usuario:
+                        <asp:Label ID="LabelUser" runat="server" Text="Label"></asp:Label>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="auto-style4">
+                        <asp:RadioButton ID="RadioButtonTitulo" runat="server" />
+                        Titulo<asp:RadioButton ID="RadioButtonAutor" runat="server" />
+                        Autor<asp:RadioButton ID="RadioButtonISBN" runat="server" />
+                        ISBN</td>
+                </tr>
+            </table>
+
+            
+        
         <div id="panelLateral" style="float:left;width:20%">
-            <asp:TreeView ID="myTreeView" runat="server">
+            <asp:TreeView ID="myTreeView" runat="server" Height="178px" Width="189px">
             </asp:TreeView>
         </div>
-    <div id="contenidoDinamico" class="auto-style1">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-            <asp:Table ID="tablaLibros" runat="server" Height="138px" Width="603px">
-            </asp:Table>
-        
-        </asp:ContentPlaceHolder>
+    <div id="contenidoDinamico" style="width:600px;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </div>
 
+
+       
+
         <div id="pie">
+            <asp:Image ID="Image3" runat="server" ImageUrl="~/imagenes/nuestrasLibrerias.png" />
             <asp:Image ID="Image2" runat="server" ImageUrl="~/imagenes/pie.png" />
         </div>
     </form>

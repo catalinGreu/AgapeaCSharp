@@ -6,16 +6,6 @@
 <head runat="server">
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-            height: 497px;
-        }
-        .auto-style2 {
-            height: 358px;
-        }
-        .auto-style4 {
-            height: 38px;
-        }
         .auto-style5 {
             margin-left: 0px;
         }
@@ -25,10 +15,6 @@
         .auto-style8 {
             margin-left: 0px;
             margin-right: 0px;
-        }
-        .auto-style9 {
-            height: 358px;
-            width: 255px;
         }
         .auto-style10 {
             width: 100%;
@@ -56,7 +42,7 @@
                                 <asp:TextBox ID="inputBusqueda" runat="server" Height="24px" Width="480px" CssClass="auto-style5"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Button ID="botonBusqueda" runat="server" CssClass="auto-style5" Height="32px" Text="Buscar" Width="158px" />
+                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/imagenes/btnBuscar.png" />
                             </td>
                         </tr>
                         <tr>

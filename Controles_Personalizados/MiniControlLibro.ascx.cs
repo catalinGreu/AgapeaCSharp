@@ -44,7 +44,7 @@ namespace Agapea.App_Code.Controles_Personalizados
         {
             get { return this.__precio; }
             set { this.__precio = value;
-                this.labelPrecio.Text = this.__precio;
+                this.labelPrecio.Text = this.__precio + " €";
             }
         }
         public string ISBNControl
