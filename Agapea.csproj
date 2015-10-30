@@ -96,12 +96,20 @@
     <Content Include="imagenes\cabecera.png" />
     <Content Include="imagenes\cabecera_form.png" />
     <Content Include="Registro.aspx" />
+    <Content Include="VistaDetallesLibro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\controladores\Controlador_Acceso_Ficheros.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Inicio.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Registro.cs" />
+    <Compile Include="VistaDetallesLibro.aspx.cs">
+      <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaDetallesLibro.aspx.designer.cs">
+      <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\modelos\Cesta.cs" />
     <Compile Include="Controles_Personalizados\MiniControlDetallesLibro.ascx.cs">
       <DependentUpon>MiniControlDetallesLibro.ascx</DependentUpon>

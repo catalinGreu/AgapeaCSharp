@@ -73,13 +73,17 @@ namespace Agapea
                         List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
                         rellenaTabla(categoryList, true);
                     }
+                    else if (clave == "__EVENTTARGET" && this.Request.Params[clave].Contains("linkButtonTitulo")) {
+                        string isbnLibro = ((string)this.Request.Params[clave]).Substring( ((string)this.Request.Params[clave]).Length - 10, 10);
+                        Response.Redirect("VistaDetallesLibro.aspx?isbn=" + isbnLibro);
+                    }
                 }
 
             }
             #endregion
             if (!this.IsPostBack)
             {
-                cargaTree(myTreeView, librosFichero);
+                //cargaTree(myTreeView, librosFichero);
                 rellenaTabla(librosFichero, false);
             }
 
@@ -165,38 +169,14 @@ namespace Agapea
             __micontrol.PrecioControl = l.Precio;
             __micontrol.ISBNControl = l.ISBN10;
 
+            ((LinkButton)__micontrol.FindControl("linkButtonTitulo")).ID += l.ISBN10;
+
             cell.Controls.Add(__micontrol);
 
             row.Cells.Add(cell);
 
         }
-
-        public void cargaTree( TreeView t, List<Libro> lista )
-        {
-
-            //Func< List<Libro>, List<string > MiFiltro = delegate (List<Libro> unelemento){
-            //    List<string> __categorias = new List<string>();
-            //    foreach(Libro unlibro in unelemento)
-            //    {
-            //        __categorias.Add(unlibro.Categoria);
-            //    }
-            //    return __categorias;
-                     //                                                               };
-
-            // var encontrados = lista.Select;
-            //List<string> categorias = (from unlibro in lista
-            //                           select unlibro.Categoria).Distinct().ToList();
-
-            List<string> categorias2 = lista.Select(unlibro => unlibro.Categoria).Distinct().ToList();
-
-            foreach (string categoria in categorias2)
-            {
-                t.Nodes.Add(new TreeNode( categoria, categoria ));
-            }
-            t.Nodes.Add(new TreeNode("Todos", "Todos"));
-            
-            
-        }
+        
         private void mostrar()
         {
             string mensaje = "";
