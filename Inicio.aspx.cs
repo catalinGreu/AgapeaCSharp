@@ -57,7 +57,7 @@ namespace Agapea
                     else if (clave == "__EVENTTARGET" && this.Request.Params[clave] == this.myTreeView.ID)
                     {
                         //si seleccion algo del treeView asigno la categoría a la variable
-                        this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[1];
+                        this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[0].Substring(1);
                         this.LabelUser.Text = "has seleccionado el nodo treeview: " + __categoriaPulsada;
                         //metodo que devuelve libros con categorías....
 

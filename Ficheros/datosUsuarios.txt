@@ -98,3 +98,7 @@ idUser: k, Correo: k, Contraseña: kk, Nombre: k, Apellidos: k
 
 idUser: j, Correo: j, Contraseña: j, Nombre: j, Apellidos: j
 
+idUser: cata.greu, Correo: cata@hotmail.com, Contraseña: asdasd, Nombre: Catalin, Apellidos: GREU
+
+idUser: greu_cat, Correo: cata@hotmail.com, Contraseña: asdasd, Nombre: Cata, Apellidos: Greu
+

@@ -25,11 +25,8 @@ namespace Agapea
            
             __controlInit = new Controlador_Vista_Inicio();
 
-
-
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
-
-            cargaTree(myTreeView, librosFichero);
+            
             #region "sesionUser"
             if (this.Session["Usuario"] != null)
             {
@@ -41,25 +38,31 @@ namespace Agapea
             }
 
             ///---llamada a procedimiento interno para ver variables post
-           
+
             #endregion
 
-
+            mostrar();
             #region "isPostback"
 
-            if (this.IsPostBack)
+            if ( this.IsPostBack )
             {//si quiero comprobar que botones se pulsan siempre necesitare un isPostBack.
 
                 foreach (string clave in this.Request.Params.AllKeys)
                 {
+
+                    switch ( clave )
+                    {
+                        default:
+                            break;
+                    }
                     if (clave == ButtonCompra.ID)
                     {
                         LabelUser.Text = "HAS PULSADO EL BOTON!!";
                     }
-                    else if (clave == "__EVENTTARGET" && this.Request.Params[clave] == myTreeView.ID)
+                    else if ( clave == "__EVENTTARGET" && this.Request.Params[clave].Contains(myTreeView.ID ))
                     {
                         //si seleccion algo del treeView asigno la categoría a la variable
-                        this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(new char[] { '\\' })[1];
+                        this.__categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split((new char[] { '\\' }))[0].Substring(1);
                         LabelUser.Text = "has seleccionado el nodo treeview: " + __categoriaPulsada;
                         //metodo que devuelve libros con categorías....
 
@@ -76,6 +79,7 @@ namespace Agapea
             #endregion
             if (!this.IsPostBack)
             {
+                cargaTree(myTreeView, librosFichero);
                 rellenaTabla(librosFichero, false);
             }
 
@@ -108,10 +112,7 @@ namespace Agapea
                         cell.Height = 100;
                         cell.Width = 300;
 
-                        cell.Style.Add("padding", "10px");
-
-                        //cell.ControlStyle.Width = Unit.Pixel(300);
-                        //cell.Style.Add(HtmlTextWriterStyle., "200px");
+                        cell.Style.Add("padding-top", "10px");
 
                         Libro l = libros.ElementAt((i * 3) + j);
 
@@ -130,7 +131,7 @@ namespace Agapea
                     for ( int k = inicio; k <= fin; k++ )
                     {
                         cell = new TableCell();
-                        cell.Style.Add("padding", "10px");
+                        cell.Style.Add("padding-top", "10px");
 
                         Libro l = libros.ElementAt(k);
                         rellenaColumna(cell, l, row);
@@ -166,31 +167,45 @@ namespace Agapea
 
             cell.Controls.Add(__micontrol);
 
-            //cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });
-            //cell.Controls.Add(new Label { Text = "Autor: " + l.Autor + "\n" });
-            //cell.Controls.Add(new Label { Text = "Editorial: " + l.Editorial + "\n" });
-            //cell.Controls.Add(new Label { Text = "Categoria: " + l.Categoria + "\n" });
-            //cell.Controls.Add(new Label { Text = "ISBN-10: " + l.ISBN10 + "\n" });
-            //cell.Controls.Add(new Label { Text = "ISBN-13: " + l.ISBN13 + "\n" });
-            //cell.Controls.Add(new Label { Text = "Precio: " + l.Precio + "\n" });
-            //cell.Controls.Add(new Label { Text = "Paginas: " + l.NumPag + "\n" });
-            //cell.Controls.Add(new Label { Text = "Resumen: " + l.Resumen + "\n" });
-            //cell.Controls.Add(new Button { Text = "Al carro" });
-
             row.Cells.Add(cell);
 
         }
 
         public void cargaTree( TreeView t, List<Libro> lista )
         {
-            foreach (Libro l in lista)
+
+            //Func< List<Libro>, List<string > MiFiltro = delegate (List<Libro> unelemento){
+            //    List<string> __categorias = new List<string>();
+            //    foreach(Libro unlibro in unelemento)
+            //    {
+            //        __categorias.Add(unlibro.Categoria);
+            //    }
+            //    return __categorias;
+                     //                                                               };
+
+            // var encontrados = lista.Select;
+            //List<string> categorias = (from unlibro in lista
+            //                           select unlibro.Categoria).Distinct().ToList();
+
+            List<string> categorias2 = lista.Select(unlibro => unlibro.Categoria).Distinct().ToList();
+
+            foreach (string categoria in categorias2)
             {
-                t.Nodes.Add(new TreeNode( l.Categoria, l.Categoria ));
+                t.Nodes.Add(new TreeNode( categoria, categoria ));
             }
+            t.Nodes.Add(new TreeNode("Todos", "Todos"));
             
             
         }
-
-        
+        private void mostrar()
+        {
+            string mensaje = "";
+            foreach (string clave in this.Request.Params.Keys)
+            {
+                mensaje += "clave:_" + clave + " -------valor:_" +
+                    this.Request.Params[clave].ToString() + "\n";
+            }
+            this.TextBox1.Text = mensaje;
+        }
     }
    }

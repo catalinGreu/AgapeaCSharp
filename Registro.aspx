@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" style="max-width:100%; overflow-x:hidden;">
 <head runat="server">
     <title></title>
     <style type="text/css">
@@ -62,7 +62,7 @@
         }
     </style>
 </head>
-<body>
+<body style="max-width:100%; overflow-x:hidden;">
     <form id="form1" runat="server">
         <asp:Image ID="Image1" runat="server" ImageUrl="~/imagenes/cabecera.png" />
     <table class="auto-style2">

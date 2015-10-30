@@ -13,7 +13,7 @@ namespace Agapea.App_Code.Controles_Personalizados
         private string __titulo;
         private string __editorial;
         private string __autor;
-        private string __precio;
+        private decimal __precio;
         private string __ISBN;
         #endregion
 
@@ -40,7 +40,7 @@ namespace Agapea.App_Code.Controles_Personalizados
                 this.labelAutor.Text = this.__autor;
             }
         }
-        public string PrecioControl
+        public decimal PrecioControl
         {
             get { return this.__precio; }
             set { this.__precio = value;

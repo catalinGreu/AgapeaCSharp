@@ -7,28 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Agapea.Paginas_Maestras {
+namespace Agapea.Controles_Personalizados {
     
     
-    public partial class MaestraVistasPrincipales {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    public partial class MiniControlDetallesLibro {
         
         /// <summary>
         /// Image1 control.
@@ -40,67 +22,85 @@ namespace Agapea.Paginas_Maestras {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// labelTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label labelTitulo;
         
         /// <summary>
-        /// ButtonCompra control.
+        /// Image2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ButtonCompra;
+        protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
-        /// LabelUser control.
+        /// labelAutor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUser;
+        protected global::System.Web.UI.WebControls.Label labelAutor;
         
         /// <summary>
-        /// RadioButtonTitulo control.
+        /// labelED control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonTitulo;
+        protected global::System.Web.UI.WebControls.Label labelED;
         
         /// <summary>
-        /// RadioButtonAutor control.
+        /// labelNumPag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonAutor;
+        protected global::System.Web.UI.WebControls.Label labelNumPag;
         
         /// <summary>
-        /// RadioButtonISBN control.
+        /// labelResum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButtonISBN;
+        protected global::System.Web.UI.WebControls.Label labelResum;
         
         /// <summary>
-        /// myTreeView control.
+        /// labelISBN10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView myTreeView;
+        protected global::System.Web.UI.WebControls.Label labelISBN10;
+        
+        /// <summary>
+        /// labelISBN13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelISBN13;
+        
+        /// <summary>
+        /// labelPrecio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelPrecio;
         
         /// <summary>
         /// Image3 control.
@@ -112,21 +112,12 @@ namespace Agapea.Paginas_Maestras {
         protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// comprarLibro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-        
-        /// <summary>
-        /// Image2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.ImageButton comprarLibro;
     }
 }
