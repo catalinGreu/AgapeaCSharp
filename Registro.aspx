@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" style="max-width:100%; overflow-x:hidden;">
 <head runat="server">
-    <title></title>
+    <title>Registro</title>
     <style type="text/css">
         .auto-style1 {
             width: 825px;

@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" style="max-width:100%; overflow-x:hidden;">
 <head runat="server">
     <title></title>
+    <meta charset="utf-8"/>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
@@ -54,7 +55,10 @@
         </div>
         
     <div id="contenidoDinamico" class="auto-style9">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <asp:Table ID="tablaLibros" runat="server" Height="272px" Width="648px">
+            </asp:Table>
+        </asp:ContentPlaceHolder>
     </div>      
 
         <div id="pie">            

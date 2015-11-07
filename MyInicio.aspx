@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Paginas_Maestras/MaestraVistasPrincipales.Master" AutoEventWireup="true" CodeBehind="MyInicio.aspx.cs" Inherits="Agapea.MyInicio" %>
+﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Paginas_Maestras/MaestraVistasPrincipales.Master" AutoEventWireup="true" CodeBehind="MyInicio.aspx.cs" Inherits="Agapea.MyInicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
     <style type="text/css">

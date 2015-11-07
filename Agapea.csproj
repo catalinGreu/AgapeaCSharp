@@ -49,6 +49,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spire.License, Version=1.3.5.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.3.5.143\lib\net40\Spire.License.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.5.143.5040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.PDF.3.5.143\lib\net40\Spire.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,8 +75,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Controles_Personalizados\MiniControlDetallesLibro.ascx" />
-    <Content Include="Controles_Personalizados\MiniControlLibro.ascx" />
+    <Content Include="ControlesUsuario\MiniDetallesLibro.ascx" />
+    <Content Include="ControlesUsuario\MiniLibro.ascx" />
     <Content Include="Ficheros\datosUsuarios.txt" />
     <Content Include="Ficheros\libros.txt" />
     <Content Include="imagenes\btnBuscar.png" />
@@ -100,9 +108,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\controladores\ControladorPDF.cs" />
+    <Compile Include="App_Code\controladores\ControladorTablas.cs" />
     <Compile Include="App_Code\controladores\Controlador_Acceso_Ficheros.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Inicio.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Registro.cs" />
+    <Compile Include="ControlesUsuario\MiniDetallesLibro.ascx.cs">
+      <DependentUpon>MiniDetallesLibro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniDetallesLibro.ascx.designer.cs">
+      <DependentUpon>MiniDetallesLibro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniLibro.ascx.cs">
+      <DependentUpon>MiniLibro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniLibro.ascx.designer.cs">
+      <DependentUpon>MiniLibro.ascx</DependentUpon>
+    </Compile>
     <Compile Include="VistaDetallesLibro.aspx.cs">
       <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -111,20 +135,6 @@
       <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>
     </Compile>
     <Content Include="App_Code\modelos\Cesta.cs" />
-    <Compile Include="Controles_Personalizados\MiniControlDetallesLibro.ascx.cs">
-      <DependentUpon>MiniControlDetallesLibro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles_Personalizados\MiniControlDetallesLibro.ascx.designer.cs">
-      <DependentUpon>MiniControlDetallesLibro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controles_Personalizados\MiniControlLibro.ascx.cs">
-      <DependentUpon>MiniControlLibro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles_Personalizados\MiniControlLibro.ascx.designer.cs">
-      <DependentUpon>MiniControlLibro.ascx</DependentUpon>
-    </Compile>
     <Compile Include="App_Code\modelos\Libro.cs" />
     <Compile Include="App_Code\modelos\Usuario.cs" />
     <Compile Include="Inicio.aspx.cs">

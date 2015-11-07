@@ -15,6 +15,11 @@ c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Agapea.
 c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Agapea.pdb
 c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\obj\Debug\Agapea.csprojResolveAssemblyReference.cache
 c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\obj\Debug\Agapea.dll
 c:\users\catalin\documents\visual studio 2015\Projects\Agapea\Agapea\obj\Debug\Agapea.pdb
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.License.dll
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.Pdf.dll
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Microsoft.mshtml.dll
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.License.xml
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.Pdf.xml
+C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\obj\Debug\Agapea.csprojResolveAssemblyReference.cache

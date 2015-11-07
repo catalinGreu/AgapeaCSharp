@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agapea.App_Code.controladores;
 using Agapea.App_Code.modelos;
-using Agapea.App_Code.Controles_Personalizados;
 namespace Agapea
 {
     public partial class Inicio : System.Web.UI.Page
@@ -154,14 +153,14 @@ namespace Agapea
         
         public void rellenaColumna( TableCell cell, Libro l, TableRow row ) {
 
-            MiniControlLibro __micontrol = ( MiniControlLibro ) Page.LoadControl((__rutaControl ));
-            __micontrol.TituloControl = l.Titulo;
-            __micontrol.EditorialControl = l.Editorial;
-            __micontrol.AutorControl = l.Autor;
-            __micontrol.PrecioControl = l.Precio;
-            __micontrol.ISBNControl = l.ISBN10;
+            //MiniControlLibro __micontrol = ( MiniControlLibro ) Page.LoadControl((__rutaControl ));
+            //__micontrol.TituloControl = l.Titulo;
+            //__micontrol.EditorialControl = l.Editorial;
+            //__micontrol.AutorControl = l.Autor;
+            //__micontrol.PrecioControl = l.Precio;
+            //__micontrol.ISBNControl = l.ISBN10;
 
-            cell.Controls.Add( __micontrol );
+            //cell.Controls.Add( __micontrol );
 
             //cell.Controls.Add(new Label { Text = "Titulo: " + l.Titulo + "\n" });
             //cell.Controls.Add(new Label { Text = "Autor: " + l.Autor + "\n" });
