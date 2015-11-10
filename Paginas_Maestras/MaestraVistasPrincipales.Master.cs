@@ -14,13 +14,12 @@ namespace Agapea.Paginas_Maestras
     {
         private Controlador_Vista_Inicio __controlInit;
         private List<Libro> librosFichero;
-        private const string __rutaControlCesta = "~/ControlesUsuario/MiniCesta.ascx";
+       
         private string __categoriaPulsada;
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            MiniCesta __controlCesta = (MiniCesta)Page.LoadControl(__rutaControlCesta);
-            this.placeHolderControl.Controls.Add(__controlCesta);
+            
             __controlInit = new Controlador_Vista_Inicio();
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
 
@@ -32,6 +31,7 @@ namespace Agapea.Paginas_Maestras
             }
             else if ( this.IsPostBack )
             {
+               
                 /*
                 si he pulsado comprar un libro...
                     - Boton mapeado contra un libro (ISBN)

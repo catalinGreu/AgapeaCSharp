@@ -11,14 +11,14 @@
     .auto-style6 {
         width: 43px;
     }
-    .auto-style7 {
-        width: 180px;
-        height: 51px;
+    .auto-style8 {
+        width: 241px;
+        height: 60px;
     }
 </style>
  <link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>
 <div>
-    <table style="width:185px; border-style: solid; "auto">
+    <table style="border-style: solid; "auto" class="auto-style8">
         <tr>
             <td class="auto-style2">
                 <asp:Image ID="Image1" runat="server" ImageUrl="~/imagenes/iconCarrito.png" />

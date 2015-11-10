@@ -20,15 +20,18 @@ namespace Agapea
         private List<Libro> librosFichero;
         private const string __rutaControlLibro = "~/ControlesUsuario/MiniLibro.ascx";
         private const string __rutaControlDetalles = "~/ControlesUsuario/MiniDetallesLibro.ascx";
-       
+        private const string __rutaControlCesta = "~/ControlesUsuario/MiniCesta.ascx";
+        private HttpCookie micookie;
         protected void Page_Load(object sender, EventArgs e)
         {
             #region "controles de la Master"
             ImageButton ButtonCompra = (ImageButton)this.Master.FindControl("ButtonCompra");
             Label LabelUser = (Label)this.Master.FindControl("LabelUser");
             TreeView myTreeView = (TreeView)this.Master.FindControl("myTreeView");
+            ContentPlaceHolder holder = (ContentPlaceHolder)this.Master.FindControl("placeHolderControl");
             #endregion
-            
+            MiniCesta __controlCesta = (MiniCesta)Page.LoadControl(__rutaControlCesta);
+            holder.Controls.Add(__controlCesta);
             __controlInit = new Controlador_Vista_Inicio();
             __controlTabla = new ControladorTablas(this.Page);
 
@@ -84,14 +87,17 @@ namespace Agapea
                                 Response.Redirect("VistaDetallesLibro.aspx?isbn=" + isbnLibro);
                             }
 
-                            else if (claveRequest.Contains("botonCompra"))
-                            {
 
-                            }
                             break;
 
                         default:
                             break;
+                           
+                    }
+                    if ( clave.Contains("botonCompra") && clave.Contains(".x"))
+                    {
+                        __controlCesta.addItem();
+                        __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
                     }
                 }
             }
@@ -99,11 +105,11 @@ namespace Agapea
             else
             {
                 __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
-               
+
             }
 
         }
-       
+
         private void mostrar()
         {
             string mensaje = "";

@@ -18,7 +18,7 @@
         width: 120px;
     }
 </style>
-
+<%--<link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>--%>
 <table class="auto-style1">
     <tr>
         <td rowspan="4" class="auto-style2">

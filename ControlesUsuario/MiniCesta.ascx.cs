@@ -9,12 +9,21 @@ namespace Agapea.ControlesUsuario
 {
     public partial class MiniCesta : System.Web.UI.UserControl
     {
-        private string __items;
+        private int __items = 0;
+        private int __total = 0;
 
-        public string NumeroItems
+        public int addItem()
         {
-            get { return this.__items; }
-            set { this.__items = value; this.labelItems.Text = this.__items + "items"; }
+            this.__items += 1;
+            this.labelItems.Text = this.__items.ToString();
+            this.__total++;
+            return this.__items;
+
+        }
+
+        public int TotalItems
+        {
+            get { return this.__total; }
         }
 
         protected void Page_Load(object sender, EventArgs e)

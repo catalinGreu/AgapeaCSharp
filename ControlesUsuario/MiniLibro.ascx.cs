@@ -68,7 +68,7 @@ namespace Agapea.ControlesUsuario
         {
             get { return this.__BotonID;  }
             set { this.botonCompra.ID = value;
-                this.botonCompra.ID = this.__BotonID; }
+                this.__BotonID = this.botonCompra.ID; }
         }
         #endregion
         #region "...metodos clase..."
@@ -89,7 +89,9 @@ namespace Agapea.ControlesUsuario
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
+                    
 
         }
+
     }
 }
