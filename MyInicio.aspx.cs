@@ -20,6 +20,7 @@ namespace Agapea
         private List<Libro> librosFichero;
         private const string __rutaControlLibro = "~/ControlesUsuario/MiniLibro.ascx";
         private const string __rutaControlDetalles = "~/ControlesUsuario/MiniDetallesLibro.ascx";
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             #region "controles de la Master"
@@ -27,7 +28,7 @@ namespace Agapea
             Label LabelUser = (Label)this.Master.FindControl("LabelUser");
             TreeView myTreeView = (TreeView)this.Master.FindControl("myTreeView");
             #endregion
-
+            
             __controlInit = new Controlador_Vista_Inicio();
             __controlTabla = new ControladorTablas(this.Page);
 
@@ -71,25 +72,22 @@ namespace Agapea
                                 if (__categoriaPulsada == "Todos")
 
                                     __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
-                                //rellenaTabla(librosFichero, false);
 
                                 List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
 
                                 __controlTabla.rellenaTablaLibros(this.tablaLibros, categoryList, true);
-                                //rellenaTabla(categoryList, true);
                             }
 
                             else if (claveRequest.Contains("linkButtonTitulo"))
                             {
-                                string laclavees = claveRequest;
                                 string isbnLibro = ((string)claveRequest).Substring(((string)claveRequest).Length - 10, 10);
                                 Response.Redirect("VistaDetallesLibro.aspx?isbn=" + isbnLibro);
                             }
 
-                            //else if (claveRequest.Contains("loqsea"))
-                            //{
+                            else if (claveRequest.Contains("botonCompra"))
+                            {
 
-                            //}
+                            }
                             break;
 
                         default:
@@ -101,7 +99,7 @@ namespace Agapea
             else
             {
                 __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
-                //rellenaTabla(librosFichero, false);
+               
             }
 
         }

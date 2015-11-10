@@ -61,6 +61,7 @@
             height: 42px;
         }
     </style>
+    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body style="max-width:100%; overflow-x:hidden;">
     <form id="form1" runat="server">
@@ -85,14 +86,14 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style21">
-                    <asp:TextBox ID="inputUsuario" runat="server" Font-Names="Calibri" Font-Size="Large" Height="20px" Width="190px"></asp:TextBox>
+                <td>
+                    <asp:TextBox ID="inputUsuario" runat="server" Font-Names="Calibri" Font-Size="Large" Height="30px" Width="190px" CssClass="form-control" ></asp:TextBox>
                 </td>
                 <td class="auto-style17">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="inputUsuario" ErrorMessage="Campo necesario" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="inputUsuario" ErrorMessage="Campo necesario" ForeColor="Red" CssClass="alert-danger"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="inputCorreo" runat="server" Font-Names="Calibri" Font-Size="Large" Height="20px" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="inputCorreo" runat="server" Font-Names="Calibri" Font-Size="Large" Height="30px" Width="190px" CssClass="form-control"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="inputCorreo" ErrorMessage="Campo necesario" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -108,19 +109,19 @@
                  </td>
                 <td class="auto-style17">&nbsp;</td>
                 <td class="auto-style14">
-                    <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Names="Calibri" Font-Size="Large" Text="Repite contraseña"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Names="Calibri" Font-Size="Large" Text="Repite contraseña" ></asp:Label>
                  </td>
                 <td>&nbsp;</td>
             </tr>
              <tr>
                 <td class="auto-style21">
-                    <asp:TextBox ID="inputPasswd" runat="server" Font-Names="Calibri" Font-Size="Large" Height="20px" TextMode="Password" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="inputPasswd" runat="server" Font-Names="Calibri" Font-Size="Large" Height="30px" TextMode="Password" Width="190px" CssClass="form-control"></asp:TextBox>
                  </td>
                 <td class="auto-style17">
                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="inputPasswd2" ControlToValidate="inputPasswd" ErrorMessage="No coinciden" ForeColor="Red"></asp:CompareValidator>
                  </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="inputPasswd2" runat="server" Font-Names="Calibri" Font-Size="Large" Height="20px" TextMode="Password" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="inputPasswd2" runat="server" Font-Names="Calibri" Font-Size="Large" Height="30px" TextMode="Password" Width="190px" CssClass="form-control"></asp:TextBox>
                  </td>
                 <td>
                     <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="inputPasswd" ControlToValidate="inputPasswd2" ErrorMessage="No coinciden" ForeColor="Red"></asp:CompareValidator>
@@ -155,13 +156,13 @@
             </tr>
             <tr>
                 <td class="auto-style21">
-                    <asp:TextBox ID="inputNombre" runat="server" Font-Names="Calibri" Font-Size="Large" Height="20px" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="inputNombre" runat="server" Font-Names="Calibri" Font-Size="Large" Height="30px" Width="190px" CssClass="form-control"></asp:TextBox>
                 </td>
                 <td class="auto-style17">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="inputNombre" ErrorMessage="Campo necesario" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="inputApellidos" runat="server" Height="20px" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="inputApellidos" runat="server" Height="30px" Width="190px" CssClass="form-control"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="inputApellidos" ErrorMessage="Campo necesario" ForeColor="Red"></asp:RequiredFieldValidator>

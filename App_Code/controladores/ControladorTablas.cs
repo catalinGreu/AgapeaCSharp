@@ -94,8 +94,10 @@ namespace Agapea.App_Code.controladores
             __micontrol.AutorControl = l.Autor;
             __micontrol.PrecioControl = l.Precio;
             __micontrol.ISBNControl = l.ISBN10;
+            __micontrol.BotonComprarID = "botonCompra"+l.ISBN10;
 
             ((LinkButton)__micontrol.FindControl("linkButtonTitulo")).ID += l.ISBN10;
+            //((ImageButton)__micontrol.FindControl("botonCompra")).ID += l.ISBN10;
 
             cell.Controls.Add(__micontrol);
             row.Cells.Add(cell);
@@ -114,6 +116,7 @@ namespace Agapea.App_Code.controladores
             __controlDetallado.ISBN13Control = l.ISBN13;
             __controlDetallado.ResumenControl = l.Resumen;
 
+            ((ImageButton) __controlDetallado.FindControl("btncomprarDetalle")).ID += l.ISBN10;
             TableRow row = new TableRow();
             TableCell cell = new TableCell();
             tabla.Rows.Add(row);

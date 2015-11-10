@@ -66,7 +66,7 @@
             <asp:Image ID="Image3" runat="server" ImageUrl="~/imagenes/recomendar.png" />
         </td>
         <td colspan="2">
-            <asp:ImageButton ID="comprarLibro" runat="server" Height="41px" ImageUrl="~/imagenes/btnCompraGrande.png" Width="179px" />
+            <asp:ImageButton UseSubmitBehavior="False" ID="btncomprarDetalle" runat="server" Height="41px" ImageUrl="~/imagenes/btnCompraGrande.png" Width="179px" />
         </td>
         <td>
             <asp:LinkButton ID="linkVolver" runat="server" OnClick="linkVolver_Click">VOLVER</asp:LinkButton>

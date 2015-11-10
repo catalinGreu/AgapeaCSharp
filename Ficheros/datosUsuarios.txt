@@ -1,1 +1,7 @@
-idUser: jon, Correo: pollon, Contraseña: asdasd, Nombre: aaa, Apellidos: aaaaaidUser: lkj, Correo: lkj, Contraseña: jj, Nombre: jj, Apellidos: jj
+usuario1:asdasd:user@yahoo.es:User:Master
+catagreu:asdasd:cata@hotmail:Catalin:Greu
+nuevouser:aaaaa:usuario@hotmail:ElChapo:Rodriguez
+user:asdasd:correo:ususario:asd
+
+user:fff:asd:alskdj:laskdj
+user.greu:asdasdasd:catalin_greu@hotmail:Catalin:Greu

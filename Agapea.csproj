@@ -75,6 +75,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ControlesUsuario\MiniCesta.ascx" />
     <Content Include="ControlesUsuario\MiniDetallesLibro.ascx" />
     <Content Include="ControlesUsuario\MiniLibro.ascx" />
     <Content Include="Ficheros\datosUsuarios.txt" />
@@ -82,13 +83,15 @@
     <Content Include="imagenes\btnBuscar.png" />
     <Content Include="imagenes\btnCompraGrande.png" />
     <Content Include="imagenes\btnComprar.png" />
+    <Content Include="imagenes\btnIdentificar.png" />
     <Content Include="imagenes\camion.png" />
+    <Content Include="imagenes\iconCarrito.png" />
     <Content Include="imagenes\iconLibro.png" />
     <Content Include="imagenes\libroDetalles.png" />
     <Content Include="imagenes\nuestrasLibrerias.png" />
     <Content Include="imagenes\pie.png" />
     <Content Include="imagenes\recomendar.png" />
-    <Content Include="Inicio.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="MyInicio.aspx" />
     <Content Include="packages.config" />
     <Content Include="Paginas_Maestras\MaestraVistasPrincipales.Master" />
@@ -109,10 +112,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\controladores\ControladorPDF.cs" />
+    <Compile Include="App_Code\controladores\ControladorCesta.cs" />
     <Compile Include="App_Code\controladores\ControladorTablas.cs" />
     <Compile Include="App_Code\controladores\Controlador_Acceso_Ficheros.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Inicio.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Registro.cs" />
+    <Compile Include="ControlesUsuario\MiniCesta.ascx.cs">
+      <DependentUpon>MiniCesta.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniCesta.ascx.designer.cs">
+      <DependentUpon>MiniCesta.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ControlesUsuario\MiniDetallesLibro.ascx.cs">
       <DependentUpon>MiniDetallesLibro.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,6 +138,13 @@
     <Compile Include="ControlesUsuario\MiniLibro.ascx.designer.cs">
       <DependentUpon>MiniLibro.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VistaDetallesLibro.aspx.cs">
       <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,13 +155,6 @@
     <Content Include="App_Code\modelos\Cesta.cs" />
     <Compile Include="App_Code\modelos\Libro.cs" />
     <Compile Include="App_Code\modelos\Usuario.cs" />
-    <Compile Include="Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MyInicio.aspx.cs">
       <DependentUpon>MyInicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,7 +178,11 @@
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Bootstrap\css\" />
+    <Folder Include="Bootstrap\fonts\" />
+    <Folder Include="Bootstrap\js\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

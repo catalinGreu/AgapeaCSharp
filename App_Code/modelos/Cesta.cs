@@ -11,17 +11,27 @@ namespace Agapea.App_Code.modelos
     {        
         private List<Libro> __acumulados;
         private NameValueCollection __misCookies;
-    
+        private string __iduser;
 
+        public Cesta() { this.__acumulados = new List<Libro>(); }
+        public Cesta( Usuario u ) {
 
-        public Cesta() {
-
+            this.__iduser = u.NombreUsuario;
             this.__acumulados = new List<Libro>();
         }
 
         public void addLibro( Libro l ) { this.__acumulados.Add( l ); }
         public void quitaLibro( Libro l) { this.__acumulados.Remove( l ); }
         public List<Libro> getLibros() { return this.__acumulados; }
+
+        public void removeAll(List<Libro> lista)
+        {
+            foreach ( Libro l in lista )
+            {
+                lista.Remove(l);
+            }
+        }
+
 
         public NameValueCollection getCookies( HttpRequest r, string idCookie )
         {

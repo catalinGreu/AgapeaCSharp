@@ -46,7 +46,7 @@
             <asp:Label ID="labelPrecio" runat="server" ForeColor="Black" Text="elprecio" Font-Bold="True" Font-Size="Large"></asp:Label>
         </td>
         <td class="auto-style4">
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="31px" ImageUrl="~/imagenes/btnComprar.png" Width="101px" />
+            <asp:ImageButton ID="botonCompra" runat="server" Height="31px" ImageUrl="~/imagenes/btnComprar.png" Width="101px" />
         </td>
     </tr>
 </table>

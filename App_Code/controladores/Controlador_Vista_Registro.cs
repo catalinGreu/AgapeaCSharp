@@ -11,23 +11,23 @@ namespace Agapea.App_Code.controladores
         private Controlador_Acceso_Ficheros micontrolador = new Controlador_Acceso_Ficheros();
 
         public Usuario GrabarDatosUsuario(string Usuario, string Apellidos, 
-            string Correo, string Nombre, string Contraseña)
+            string Correo, string Nombre, string pass)
         {
 
-            Usuario nuevoUsuario = new Usuario();
+            Usuario u = new Usuario();
 
-            nuevoUsuario.NombreUsuario = Usuario;
-            nuevoUsuario.Correo = Correo;
-            nuevoUsuario.Password = Contraseña;
-            nuevoUsuario.Nombre = Nombre;
-            nuevoUsuario.Apellidos = Apellidos;            
+            u.NombreUsuario = Usuario;
+            u.Correo = Correo;
+            u.Password = pass;
+            u.Nombre = Nombre;
+            u.Apellidos = Apellidos;            
 
             try {
                 //existe y lo abre, o no existe y lo crea, true
                 if ( micontrolador.AbrirFichero( HttpContext.Current.Request.MapPath ("./Ficheros/datosUsuarios.txt") ) )
                     {
                     
-                    micontrolador.GrabarDatos( nuevoUsuario, HttpContext.Current.Request.MapPath("./Ficheros/datosUsuarios.txt")); 
+                    micontrolador.GrabarDatosFichero( u, HttpContext.Current.Request.MapPath("./Ficheros/datosUsuarios.txt")); 
                 }
             }
             catch (Exception e) {
@@ -36,7 +36,7 @@ namespace Agapea.App_Code.controladores
             }
            
             // si al llamar al controlador del fichero y grabar los datos, se graban bien devuelvo nuevoUsuario, si no devuelvo null
-            return nuevoUsuario;
+            return u;
         }
     }
 }

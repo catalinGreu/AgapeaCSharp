@@ -15,6 +15,7 @@ namespace Agapea.ControlesUsuario
         private string __autor;
         private decimal __precio;
         private string __ISBN;
+        private string __BotonID;
 
         #region "controles getters y setters"
         public string TituloControl
@@ -62,6 +63,12 @@ namespace Agapea.ControlesUsuario
                 this.__ISBN = value;
                 this.labelISBN.Text = this.__ISBN;
             }
+        }
+        public string BotonComprarID
+        {
+            get { return this.__BotonID;  }
+            set { this.botonCompra.ID = value;
+                this.botonCompra.ID = this.__BotonID; }
         }
         #endregion
         #region "...metodos clase..."

@@ -16,9 +16,24 @@ namespace Agapea
         private ControladorTablas __controlTablas;
         private List<Libro> listaRecuperada;
         private string __rutaControl = "~/ControlesUsuario/MiniDetallesLibro.ascx";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region "sesionUser"
+            Label LabelUser = (Label)this.Master.FindControl("LabelUser");
 
+            if (this.Session["Usuario"] != null)
+            {
+                LabelUser.Text = (string)Session["Usuario"];
+            }
+            else
+            {
+                LabelUser.Text = "Parece que el nombre no se almacena bien";
+            }
+
+            ///---llamada a procedimiento interno para ver variables post
+
+            #endregion
             __controlTablas = new ControladorTablas(this.Page);
             __controlInit = new Controlador_Vista_Inicio();
             TreeView myTreeView = (TreeView)this.Master.FindControl("myTreeView");
@@ -51,7 +66,7 @@ namespace Agapea
                                 string __categoriaPulsada = this.Request.Params["__EVENTARGUMENT"].ToString().Split(separador)[0].Substring(1);
 
                                 if (__categoriaPulsada == "Todos")
-                                    
+
                                     __controlTablas.rellenaTablaLibros(this.tablaDetallesLibro, listaRecuperada, false);
                                 //rellenaTabla(librosFichero, false);
 

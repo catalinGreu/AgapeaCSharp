@@ -10,6 +10,33 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         
+        .auto-style1 {
+            width: 1285px;
+            height: 80px;
+        }
+        .auto-style7 {
+            height: 33px;
+        }
+        
+        .auto-style8 {
+            height: 33px;
+            width: 751px;
+        }
+        .auto-style9 {
+            height: 60px;
+        }
+        .auto-style10 {
+            height: 49px;
+            width: 751px;
+        }
+        .auto-style11 {
+            height: 49px;
+        }
+        .auto-style12 {
+            height: 49px;
+            width: 375px;
+        }
+        
     </style>
     </head>
 <body style="max-width:100%; overflow-x:hidden;">
@@ -19,27 +46,37 @@
         </div>
        
             
-            <table class="auto-style12">
+            <table class="auto-style1">
                 <tr>
-                    <td class="auto-style13">
+                    <td class="auto-style11">
                     </td>
-                    <td class="auto-style14">
+                    <td class="auto-style10">
                         <asp:TextBox ID="TextBox1" runat="server" Height="24px" Width="717px"></asp:TextBox>
                     </td>
-                    <td rowspan="2">
-                        <asp:ImageButton Height="33px" ID="ButtonCompra" runat="server" ImageUrl="~/imagenes/btnBuscar.png" CssClass="auto-style16" Width="160px" />
+                    <td class="auto-style12">
+                        <asp:ImageButton Height="33px" ID="ButtonBuscar" runat="server" ImageUrl="~/imagenes/btnBuscar.png" CssClass="auto-style16" Width="160px" />
                         &nbsp;Usuario:
                         <asp:Label ID="LabelUser" runat="server" Text="Label"></asp:Label>
                     </td>
+                    
+                    <td class="auto-style11">
+                        <asp:ContentPlaceHolder ID="placeHolderControl" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                    
                 </tr>
                  <tr>
-                     <td class="auto-style11"></td>
-                     <td>
+                     <td class="auto-style7"></td>
+                     <td class="auto-style8">
                         <asp:RadioButton ID="RadioButtonTitulo" runat="server" />
                         Titulo<asp:RadioButton ID="RadioButtonAutor" runat="server" />
                         Autor<asp:RadioButton ID="RadioButtonISBN" runat="server" />
                         ISBN</td>
                 </tr>
+
+                <div style="float:right">
+                    
+                </div>
             </table>
 
             
