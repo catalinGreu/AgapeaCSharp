@@ -9,8 +9,8 @@ namespace Agapea.ControlesUsuario
 {
     public partial class MiniCesta : System.Web.UI.UserControl
     {
-        private int __items = 0;
-        private int __total = 0;
+        private int __items;
+        private int __total;
 
         public int addItem()
         {

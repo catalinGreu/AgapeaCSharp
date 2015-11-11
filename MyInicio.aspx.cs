@@ -92,10 +92,15 @@ namespace Agapea
 
                         default:
                             break;
-                           
+
                     }
-                    if ( clave.Contains("botonCompra") && clave.Contains(".x"))
+                    if (clave.Contains("botonCompra") && clave.Contains(".x"))
                     {
+                        string isbnLibro = ((string)clave).Substring(((string)clave).Length - 12, 10);
+                        //Response.Cookies["cesta"]["libros"] += isbnLibro + ":";
+                        //miCookie.Values += isbnLibro + ":";
+                        Request.Cookies["cesta"].Value += isbnLibro + ":";
+                        ///me la chafa y pone el mismo isbn creo
                         __controlCesta.addItem();
                         __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
                     }
@@ -104,6 +109,8 @@ namespace Agapea
             #endregion
             else
             {
+                HttpCookie miCookie = new HttpCookie("cesta");
+                miCookie.Values["libros"] = "";
                 __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
 
             }
