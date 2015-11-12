@@ -21,7 +21,7 @@ namespace Agapea
         private const string __rutaControlLibro = "~/ControlesUsuario/MiniLibro.ascx";
         private const string __rutaControlDetalles = "~/ControlesUsuario/MiniDetallesLibro.ascx";
         private const string __rutaControlCesta = "~/ControlesUsuario/MiniCesta.ascx";
-        private HttpCookie micookie;
+        private HttpCookie __miCookie;
         protected void Page_Load(object sender, EventArgs e)
         {
             #region "controles de la Master"
@@ -32,6 +32,7 @@ namespace Agapea
             #endregion
             MiniCesta __controlCesta = (MiniCesta)Page.LoadControl(__rutaControlCesta);
             holder.Controls.Add(__controlCesta);
+
             __controlInit = new Controlador_Vista_Inicio();
             __controlTabla = new ControladorTablas(this.Page);
 
@@ -97,20 +98,33 @@ namespace Agapea
                     if (clave.Contains("botonCompra") && clave.Contains(".x"))
                     {
                         string isbnLibro = ((string)clave).Substring(((string)clave).Length - 12, 10);
-                        //Response.Cookies["cesta"]["libros"] += isbnLibro + ":";
-                        //miCookie.Values += isbnLibro + ":";
-                        Request.Cookies["cesta"].Value += isbnLibro + ":";
+
+                        if ( Request.Cookies["cesta"] != null )
+                        {
+                            HttpCookie newCookie = Request.Cookies["cesta"];
+                            newCookie.Values["libros"] += isbnLibro + ":";
+                            Response.Cookies.Add(newCookie);
+                        }
+                       //por fin chuta joder
+
                         ///me la chafa y pone el mismo isbn creo
                         __controlCesta.addItem();
                         __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
+                    }
+                    else if (clave.Contains("botonVerCesta"))
+                    {
+                        //antes de mandar la cookie podría quitarle los ultimos
+                        //dos puntos para leerla mejor
+                        Response.Redirect("VistaCesta.aspx");
                     }
                 }
             }
             #endregion
             else
             {
-                HttpCookie miCookie = new HttpCookie("cesta");
-                miCookie.Values["libros"] = "";
+                Response.Cookies["cesta"]["owner"] = (string)this.Session["Usuario"];
+                Response.Cookies["cesta"]["libros"] = "";
+                Response.Cookies["cesta"].Expires = DateTime.Now.AddDays(1);
                 __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
 
             }

@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ControlesUsuario\MiniCesta.ascx" />
+    <Content Include="ControlesUsuario\MiniCestaItem.ascx" />
     <Content Include="ControlesUsuario\MiniDetallesLibro.ascx" />
     <Content Include="ControlesUsuario\MiniLibro.ascx" />
     <Content Include="Ficheros\datosUsuarios.txt" />
@@ -107,6 +108,7 @@
     <Content Include="imagenes\cabecera.png" />
     <Content Include="imagenes\cabecera_form.png" />
     <Content Include="Registro.aspx" />
+    <Content Include="VistaCesta.aspx" />
     <Content Include="VistaDetallesLibro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -123,6 +125,13 @@
     </Compile>
     <Compile Include="ControlesUsuario\MiniCesta.ascx.designer.cs">
       <DependentUpon>MiniCesta.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniCestaItem.ascx.cs">
+      <DependentUpon>MiniCestaItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlesUsuario\MiniCestaItem.ascx.designer.cs">
+      <DependentUpon>MiniCestaItem.ascx</DependentUpon>
     </Compile>
     <Compile Include="ControlesUsuario\MiniDetallesLibro.ascx.cs">
       <DependentUpon>MiniDetallesLibro.ascx</DependentUpon>
@@ -144,6 +153,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VistaCesta.aspx.cs">
+      <DependentUpon>VistaCesta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaCesta.aspx.designer.cs">
+      <DependentUpon>VistaCesta.aspx</DependentUpon>
     </Compile>
     <Compile Include="VistaDetallesLibro.aspx.cs">
       <DependentUpon>VistaDetallesLibro.aspx</DependentUpon>

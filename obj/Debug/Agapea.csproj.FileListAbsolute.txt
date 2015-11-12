@@ -22,4 +22,3 @@ C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.P
 C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Microsoft.mshtml.dll
 C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.License.xml
 C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\bin\Spire.Pdf.xml
-C:\Users\Catalin\documents\visual studio 2015\Projects\Agapea\Agapea\obj\Debug\Agapea.csprojResolveAssemblyReference.cache

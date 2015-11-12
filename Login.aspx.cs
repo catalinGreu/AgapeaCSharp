@@ -39,12 +39,11 @@ namespace Agapea
                     this.labelError.Text = "Usuario o Password incorrectas";
                 }
             }
-
         }
 
         protected void botonRegistro_Click( object sender, ImageClickEventArgs e )
         {
-            this.Response.Redirect("localhost:3295/Registro.aspx");
+            this.Response.Redirect("Registro.aspx");
         }
     }
 }
