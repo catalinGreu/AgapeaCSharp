@@ -16,39 +16,30 @@ namespace Agapea
         private ControladorTablas __controlTablas;
         private ControladorCesta __controlCesta;
         private string __cadenaISBN;
+        private const string rutaFichero = "./Ficheros/libros.txt";
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Libro> librosFichero;
             List<Libro> librosCesta = new List<Libro>();
             //List<Libro> librosCesta;
             __controlFichero = new Controlador_Acceso_Ficheros();
-
-            librosFichero = __controlFichero.infoLibros("./Ficheros/libros.txt");
+            __controlCesta = new ControladorCesta();
 
             try
             {
-                foreach ( string isbn in readCookie() )
-                {
-                    foreach (Libro l in librosFichero)
-                    {
-                        if (l.ISBN10 == isbn)
-                        {
-                            librosCesta.Add(l);
-
-                        }
-                    }
-                }
+                librosCesta = __controlCesta.getLibrosPorISBN(readCookie(), rutaFichero);
             }
             catch (Exception)
             {
-                this.labelSubtotal.Text = "No has agregado libros.";
-
+                
+               //hostion
             }
 
-            //CUTREZ!! Pero me queda una lista con los libros 
-            //de la cesta de usuario
+           
+           
             __controlTablas = new ControladorTablas(this.Page);
-            this.labelSubtotal.Text = __controlTablas.rellenaItems(librosCesta, this.tablaItems);
+            string subTotal = __controlTablas.rellenaItems(librosCesta, this.tablaItems);
+            this.labelSubtotal.Text = subTotal;
+            //this.labelTotalCompra.Text = ( Convert.ToDecimal(subTotal) ).ToString() + " euros";
             //rellena la tabla con items y ademas me devuelve el precio total;
         }
         public string[] readCookie()

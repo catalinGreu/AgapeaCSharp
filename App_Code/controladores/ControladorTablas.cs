@@ -116,7 +116,7 @@ namespace Agapea.App_Code.controladores
             __controlDetallado.ISBN13Control = l.ISBN13;
             __controlDetallado.ResumenControl = l.Resumen;
 
-            ((ImageButton) __controlDetallado.FindControl("btncomprarDetalle")).ID += l.ISBN10;
+            ((Button) __controlDetallado.FindControl("btncomprarDetalle")).ID += l.ISBN10;
             TableRow row = new TableRow();
             TableCell cell = new TableCell();
             tabla.Rows.Add(row);

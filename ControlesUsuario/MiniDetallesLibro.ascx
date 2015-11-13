@@ -7,7 +7,7 @@
         width: 401px;
     }
 </style>
-
+ <link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>
 <table style="width:auto;">
     <tr>
         <td class="auto-style2" rowspan="7">
@@ -63,10 +63,10 @@
     </tr>
     <tr>
         <td>
-            <asp:Image ID="Image3" runat="server" ImageUrl="~/imagenes/recomendar.png" />
+            <asp:Image ID="Image3" runat="server" ImageUrl="~/imagenes/recomendar.png"/>
         </td>
         <td colspan="2">
-            <asp:ImageButton UseSubmitBehavior="False" ID="btncomprarDetalle" runat="server" Height="41px" ImageUrl="~/imagenes/btnCompraGrande.png" Width="179px" />
+            <asp:Button ID="btncomprarDetalle" runat="server" Text="Button" CssClass="btn btn-lg btn-primary"/>
         </td>
         <td>
             <asp:LinkButton ID="linkVolver" runat="server" OnClick="linkVolver_Click">VOLVER</asp:LinkButton>

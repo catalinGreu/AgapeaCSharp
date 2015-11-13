@@ -80,6 +80,21 @@ namespace Agapea
                         default:
                             break;
                     }
+                    if (clave.Contains("btncomprarDetalle"))
+                    {
+                        string isbnLibro = parametroISBN;
+                        //ya tengo el ISBN porq me lo mando con la url.
+                        if (Request.Cookies["cesta"] != null)
+                        {
+                            HttpCookie miCookie = Request.Cookies["cesta"];
+                            miCookie.Values["libros"] += isbnLibro + ":";
+                            Response.Cookies.Add(miCookie);
+                        }
+
+                        Response.Redirect("VistaCesta.aspx");
+                    }
+
+
                 }
             }
         }

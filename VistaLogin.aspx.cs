@@ -5,21 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Agapea.App_Code.controladores;
-using Agapea.App_Code.modelos;
-
 namespace Agapea
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class VistaLogin : System.Web.UI.Page
     {
         Controlador_Acceso_Ficheros __control;
         string ruta = "./Ficheros/datosUsuarios.txt";
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.inputLogin.Focus();
-           
+            this.inputID.Focus();
+
         }
 
-        protected void botonEntrar_Click(object sender, ImageClickEventArgs e)
+        protected void botonEntrar_Click(object sender, EventArgs e)
         {
             if (!this.IsValid)
             {
@@ -29,9 +27,9 @@ namespace Agapea
             {
                 __control = new Controlador_Acceso_Ficheros();
 
-                if ( __control.existeUsuario( this.inputLogin.Text, this.inputPass.Text, ruta) )
+                if (__control.existeUsuario(this.inputID.Text, this.inputPass.Text, ruta))
                 {
-                    this.Session["Usuario"] = this.inputLogin.Text;
+                    this.Session["Usuario"] = this.inputID.Text;
                     this.Response.Redirect("MyInicio.aspx");
                 }
                 else
@@ -41,9 +39,9 @@ namespace Agapea
             }
         }
 
-        protected void botonRegistro_Click( object sender, ImageClickEventArgs e )
+        protected void btonRegistro_Click(object sender, EventArgs e)
         {
-            this.Response.Redirect("Registro.aspx");
+
         }
     }
 }

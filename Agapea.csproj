@@ -92,7 +92,6 @@
     <Content Include="imagenes\nuestrasLibrerias.png" />
     <Content Include="imagenes\pie.png" />
     <Content Include="imagenes\recomendar.png" />
-    <Content Include="Login.aspx" />
     <Content Include="MyInicio.aspx" />
     <Content Include="packages.config" />
     <Content Include="Paginas_Maestras\MaestraVistasPrincipales.Master" />
@@ -110,9 +109,17 @@
     <Content Include="Registro.aspx" />
     <Content Include="VistaCesta.aspx" />
     <Content Include="VistaDetallesLibro.aspx" />
+    <Content Include="VistaLogin.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VistaLogin.aspx.cs">
+      <DependentUpon>VistaLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaLogin.aspx.designer.cs">
+      <DependentUpon>VistaLogin.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\controladores\ControladorPDF.cs" />
     <Compile Include="App_Code\controladores\ControladorCesta.cs" />
     <Content Include="App_Code\controladores\ControladorEmail.cs" />
@@ -146,13 +153,6 @@
     </Compile>
     <Compile Include="ControlesUsuario\MiniLibro.ascx.designer.cs">
       <DependentUpon>MiniLibro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="VistaCesta.aspx.cs">
       <DependentUpon>VistaCesta.aspx</DependentUpon>

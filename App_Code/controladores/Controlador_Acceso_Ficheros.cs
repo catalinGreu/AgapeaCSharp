@@ -36,40 +36,27 @@ namespace Agapea.App_Code.controladores
         public List<Libro> librosByISBN(string[] isbns, string ruta)
         {
             fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
-            List<Libro> listaRetorno = new List<Libro>();
-            string[] lineasDevueltas = new string[] { };
+            //List<Libro> listaRetorno = new List<Libro>();
+            //string[] lineasDevueltas = new string[] { };
 
-            foreach (string isbn in isbns)
-            {
-                lineasDevueltas = (from linea in fichero.ReadToEnd().Split(new char[] { '\r', '\n' }).Where(linea => !new System.Text.RegularExpressions.Regex("^$").Match(linea).Success)
-                                   let campoISBN10 = linea.Split(new char[] { ':' })[4]
-                                   where campoISBN10 == isbn
-                                   select linea).ToArray();
-
-            }
-            //no funcion, si hay mas de un isbn en el array
-            // al meterse en el foreach borra lo anterior o algo
-            //y me devuelve la lista de libros vacia;
-            foreach ( string linea in lineasDevueltas )
-            {
-                Libro l = new Libro();
-
-                string[] elementos = linea.Split(new char[] { ':' });
-                l.Titulo = elementos[0];
-                l.Autor = elementos[1];
-                l.Editorial = elementos[2];
-                l.Categoria = elementos[3];
-                l.ISBN10 = elementos[4];
-                l.ISBN13 = elementos[5];
-                //l.Precio = decimal.Parse(elementos[6]);//esto la ultima vez no iba.
-                l.Precio = Convert.ToDecimal(elementos[6]);
-                l.NumPag = elementos[7];
-                l.Resumen = elementos[8];
-
-                listaRetorno.Add(l);
-
-            }
-            return listaRetorno; //devuelvo Libros de la Cesta;
+            return (from unalinea in fichero.ReadToEnd().Split(new char[] { '\r', '\n' }).Where(linea => !new System.Text.RegularExpressions.Regex("^$").Match(linea).Success)
+                    let campoISBN10 = unalinea.Split(new char[] { ':' })[4]
+                    let elementos = unalinea.Split(new char[] { ':' })
+                    join isbn in isbns
+                    on campoISBN10 equals isbn
+                    select new Libro()
+                    {
+                        Titulo = elementos[0],
+                        Autor = elementos[1],
+                        Editorial = elementos[2],
+                        Categoria = elementos[3],
+                        ISBN10 = elementos[4],
+                        ISBN13 = elementos[5],
+                        Precio = Convert.ToDecimal(elementos[6]),
+                        NumPag = elementos[7],
+                        Resumen = elementos[8]
+                    }).ToList<Libro>();
+            
         }
 
         public Boolean GrabarDatosFichero(Usuario u, string ruta)
