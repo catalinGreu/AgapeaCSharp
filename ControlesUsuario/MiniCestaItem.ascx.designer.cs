@@ -22,6 +22,24 @@ namespace Agapea.ControlesUsuario {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
+        /// labelAutor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelAutor;
+        
+        /// <summary>
+        /// labelISBN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelISBN;
+        
+        /// <summary>
         /// labelTitulo control.
         /// </summary>
         /// <remarks>
@@ -31,12 +49,12 @@ namespace Agapea.ControlesUsuario {
         protected global::System.Web.UI.WebControls.Label labelTitulo;
         
         /// <summary>
-        /// labelAutor control.
+        /// labelPrecio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelAutor;
+        protected global::System.Web.UI.WebControls.Label labelPrecio;
     }
 }

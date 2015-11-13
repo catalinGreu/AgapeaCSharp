@@ -9,10 +9,11 @@ namespace Agapea.App_Code.controladores
     public class Controlador_Acceso_Ficheros
     {
 
-        private StreamReader reader;
+        private StreamReader fichero;
         private StreamWriter writer;
-        private FileStream ficheroTexto;
         private string cadenaUsuario = "";
+        private Libro l;
+        private List<Libro> lista;
 
         public Boolean AbrirFichero(string ruta)
         {
@@ -32,6 +33,45 @@ namespace Agapea.App_Code.controladores
 
         }
 
+        public List<Libro> librosByISBN(string[] isbns, string ruta)
+        {
+            fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
+            List<Libro> listaRetorno = new List<Libro>();
+            string[] lineasDevueltas = new string[] { };
+
+            foreach (string isbn in isbns)
+            {
+                lineasDevueltas = (from linea in fichero.ReadToEnd().Split(new char[] { '\r', '\n' }).Where(linea => !new System.Text.RegularExpressions.Regex("^$").Match(linea).Success)
+                                   let campoISBN10 = linea.Split(new char[] { ':' })[4]
+                                   where campoISBN10 == isbn
+                                   select linea).ToArray();
+
+            }
+            //no funcion, si hay mas de un isbn en el array
+            // al meterse en el foreach borra lo anterior o algo
+            //y me devuelve la lista de libros vacia;
+            foreach ( string linea in lineasDevueltas )
+            {
+                Libro l = new Libro();
+
+                string[] elementos = linea.Split(new char[] { ':' });
+                l.Titulo = elementos[0];
+                l.Autor = elementos[1];
+                l.Editorial = elementos[2];
+                l.Categoria = elementos[3];
+                l.ISBN10 = elementos[4];
+                l.ISBN13 = elementos[5];
+                //l.Precio = decimal.Parse(elementos[6]);//esto la ultima vez no iba.
+                l.Precio = Convert.ToDecimal(elementos[6]);
+                l.NumPag = elementos[7];
+                l.Resumen = elementos[8];
+
+                listaRetorno.Add(l);
+
+            }
+            return listaRetorno; //devuelvo Libros de la Cesta;
+        }
+
         public Boolean GrabarDatosFichero(Usuario u, string ruta)
         {
             cadenaUsuario = (u.NombreUsuario + ":" + u.Password + ":" + u.Correo + ":" + u.Nombre + ":" + u.Apellidos);
@@ -45,9 +85,9 @@ namespace Agapea.App_Code.controladores
         }
         public Boolean existeUsuario(string id, string pass, string ruta)
         {
-            reader = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
+            fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
 
-            bool resultado = (from linea in reader.ReadToEnd().Split(new char[] { '\r', '\n' }).Where(linea => !new System.Text.RegularExpressions.Regex("^$").Match(linea).Success)
+            bool resultado = (from linea in fichero.ReadToEnd().Split(new char[] { '\r', '\n' }).Where(linea => !new System.Text.RegularExpressions.Regex("^$").Match(linea).Success)
                               let campousu = linea.Split(new char[] { ':' })[0]
                               let campopass = linea.Split(new char[] { ':' })[1]
                               where id == campousu && pass == campopass
@@ -56,6 +96,65 @@ namespace Agapea.App_Code.controladores
 
         }
 
+        public List<Libro> infoLibros(string ruta)
+        {
+            //int cont = 0;
+            string linea;
+            fichero = new StreamReader(HttpContext.Current.Request.MapPath(ruta));
+            lista = new List<Libro>();
 
+            while ((linea = fichero.ReadLine()) != null)
+            {
+
+                string[] elementos = linea.Split(new char[] { ':' });
+
+                l = new Libro();
+
+                l.Titulo = elementos[0];
+                l.Autor = elementos[1];
+                l.Editorial = elementos[2];
+                l.Categoria = elementos[3];
+                l.ISBN10 = elementos[4];
+                l.ISBN13 = elementos[5];
+                //l.Precio = decimal.Parse(elementos[6]);//esto la ultima vez no iba.
+                l.Precio = Convert.ToDecimal(elementos[6]);
+                l.NumPag = elementos[7];
+                l.Resumen = elementos[8];
+
+                lista.Add(l);
+
+            }
+
+            fichero.Close();
+
+            return lista;
+
+        }
+
+        public List<Libro> findByCategory(List<Libro> lista, string categoria)
+        {
+
+            int comprobacion = lista.Count;
+
+            List<Libro> listaRet = new List<Libro>();
+
+            var resultado = from libro in lista
+                            where libro.Categoria == categoria
+                            select libro;
+
+
+            //var resultado = (from linea in new StreamReader(HttpContext.Current.Request.MapPath(ruta)).ReadToEnd().Split(new char[] { '\r','\n'}).Where(linea2 => ! new Regex("^$").Match(linea2).Success)
+            //                 let match = linea.Split(new char[] { ':' })[3]
+            //                 where match == categoria
+            //                 select linea );
+
+            //suponiendo que me devuelve una coleccion de strings....
+            foreach (Libro l in resultado)
+            {
+                listaRet.Add(l);
+
+            }
+            return listaRet;
+        }
     }
 }

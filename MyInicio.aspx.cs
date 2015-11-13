@@ -14,14 +14,16 @@ namespace Agapea
 {
     public partial class MyInicio : System.Web.UI.Page
     {
-        private Controlador_Vista_Inicio __controlInit;
+        //hay que cambiar el ControladorFichero
+        //meter todo el Codigo de ControladorInicio.
+        private Controlador_Acceso_Ficheros __controlFichero;
         private ControladorTablas __controlTabla;
         private string __categoriaPulsada;
         private List<Libro> librosFichero;
         private const string __rutaControlLibro = "~/ControlesUsuario/MiniLibro.ascx";
         private const string __rutaControlDetalles = "~/ControlesUsuario/MiniDetallesLibro.ascx";
         private const string __rutaControlCesta = "~/ControlesUsuario/MiniCesta.ascx";
-        private HttpCookie __miCookie;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             #region "controles de la Master"
@@ -33,10 +35,10 @@ namespace Agapea
             MiniCesta __controlCesta = (MiniCesta)Page.LoadControl(__rutaControlCesta);
             holder.Controls.Add(__controlCesta);
 
-            __controlInit = new Controlador_Vista_Inicio();
+            __controlFichero = new Controlador_Acceso_Ficheros();
             __controlTabla = new ControladorTablas(this.Page);
 
-            librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
+            librosFichero = __controlFichero.infoLibros("./Ficheros/libros.txt");
 
             #region "sesionUser"
             if (this.Session["Usuario"] != null)
@@ -77,7 +79,7 @@ namespace Agapea
 
                                     __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
 
-                                List<Libro> categoryList = __controlInit.findByCategory(librosFichero, __categoriaPulsada);
+                                List<Libro> categoryList = __controlFichero.findByCategory(librosFichero, __categoriaPulsada);
 
                                 __controlTabla.rellenaTablaLibros(this.tablaLibros, categoryList, true);
                             }
@@ -95,26 +97,23 @@ namespace Agapea
                             break;
 
                     }
-                    if (clave.Contains("botonCompra") && clave.Contains(".x"))
+                    if (clave.Contains("botonCompra") )
                     {
-                        string isbnLibro = ((string)clave).Substring(((string)clave).Length - 12, 10);
+                        string isbnLibro = ((string)clave).Substring(((string)clave).Length - 10, 10);
 
                         if ( Request.Cookies["cesta"] != null )
                         {
-                            HttpCookie newCookie = Request.Cookies["cesta"];
-                            newCookie.Values["libros"] += isbnLibro + ":";
-                            Response.Cookies.Add(newCookie);
+                            HttpCookie miCookie = Request.Cookies["cesta"];
+                            miCookie.Values["libros"] += isbnLibro + ":";
+                            Response.Cookies.Add(miCookie);
                         }
-                       //por fin chuta joder
-
-                        ///me la chafa y pone el mismo isbn creo
+                     
                         __controlCesta.addItem();
                         __controlTabla.rellenaTablaLibros(this.tablaLibros, librosFichero, false);
                     }
                     else if (clave.Contains("botonVerCesta"))
                     {
-                        //antes de mandar la cookie podría quitarle los ultimos
-                        //dos puntos para leerla mejor
+                       
                         Response.Redirect("VistaCesta.aspx");
                     }
                 }

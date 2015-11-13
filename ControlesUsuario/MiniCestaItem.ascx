@@ -7,26 +7,31 @@
         width: 219px;
     }
     .auto-style3 {
-        width: 56%;
+        width: 60%;
+        height: 84px;
     }
 </style>
-<table class="auto-style3">
+<table style="width:500px">
     <tr>
         <td class="auto-style1" rowspan="2">
             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/imagenes/iconLibro.png" Width="52px" />
         </td>
         <td class="auto-style2">
-            <asp:Label ID="labelTitulo" runat="server" Text="Titulo"></asp:Label>
+            <asp:Label ID="labelAutor" runat="server" Text="Autor"></asp:Label>
         </td>
-        <td>&nbsp;</td>
+        <td>
+            <asp:Label ID="labelISBN" runat="server" Text="isbn"></asp:Label>
+        </td>
     </tr>
     <tr>
         <td class="auto-style2">
-            <asp:Label ID="labelAutor" runat="server" Text="Autor"></asp:Label>
+            <asp:Label ID="labelTitulo" runat="server" Text="Titulo"></asp:Label>
         </td>
-        <td>&nbsp;</td>
+        <td>
+            <asp:Label ID="labelPrecio" runat="server" Font-Bold="True" Text="labelPrecio"></asp:Label>
+        </td>
     </tr>
-    d>&nbsp;</td>
+    
     </tr>
 </table>
 

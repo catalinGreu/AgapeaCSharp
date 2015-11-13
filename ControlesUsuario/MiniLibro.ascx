@@ -4,22 +4,26 @@
         width: 349px;
         height: 141px;
     }
+
     .auto-style2 {
         width: 104px;
     }
+
     .auto-style3 {
         height: 35px;
     }
+
     .auto-style4 {
         width: 268435456px;
     }
+
     .auto-style5 {
         height: 35px;
         width: 120px;
     }
 </style>
-<%--<link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>--%>
-<table class="auto-style1">
+<link href="Bootstrap/css/bootstrap.css" rel="stylesheet" />
+<table class="table table-hover">
     <tr>
         <td rowspan="4" class="auto-style2">
             <asp:Image ID="imagenLibro" runat="server" Height="101px" ImageAlign="Middle" Width="90px" ImageUrl="~/imagenes/iconLibro.png" />
@@ -46,7 +50,10 @@
             <asp:Label ID="labelPrecio" runat="server" ForeColor="Black" Text="elprecio" Font-Bold="True" Font-Size="Large"></asp:Label>
         </td>
         <td class="auto-style4">
-            <asp:ImageButton ID="botonCompra" runat="server" Height="31px" ImageUrl="~/imagenes/btnComprar.png" Width="101px" />
+           
+            <asp:Button ID="botonCompra" runat="server" Height="31px" Width="113px" CssClass="btn btn-primary" Text="Comprar" />
+
+
         </td>
     </tr>
 </table>

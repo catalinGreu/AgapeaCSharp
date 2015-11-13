@@ -12,7 +12,8 @@ namespace Agapea.App_Code.controladores
     public class ControladorTablas
     {
         private const string __rutaControlLibro = "~/ControlesUsuario/MiniLibro.ascx";
-        private string __rutaControl = "~/ControlesUsuario/MiniDetallesLibro.ascx";
+        private const string __rutaControl = "~/ControlesUsuario/MiniDetallesLibro.ascx";
+        private const string __rutaControlItem = "~/ControlesUsuario/MiniCestaItem.ascx";
         private Page __laPagina;
 
         public ControladorTablas() { }
@@ -97,7 +98,6 @@ namespace Agapea.App_Code.controladores
             __micontrol.BotonComprarID = "botonCompra"+l.ISBN10;
 
             ((LinkButton)__micontrol.FindControl("linkButtonTitulo")).ID += l.ISBN10;
-            //((ImageButton)__micontrol.FindControl("botonCompra")).ID += l.ISBN10;
 
             cell.Controls.Add(__micontrol);
             row.Cells.Add(cell);
@@ -123,6 +123,26 @@ namespace Agapea.App_Code.controladores
 
             cell.Controls.Add(__controlDetallado);
             row.Cells.Add(cell);
+        }
+
+        public string rellenaItems (List<Libro> lista, Table tabla )
+        {
+            decimal subtotal = 0;
+            foreach ( Libro l in lista )
+            {
+                MiniCestaItem __controlItem = (MiniCestaItem)__laPagina.LoadControl(__rutaControlItem);
+                __controlItem.TituloControl = l.Titulo;
+                __controlItem.AutorControl = l.Autor;
+                __controlItem.ISBNControl = l.ISBN10;
+                __controlItem.PrecioControl = l.Precio;
+                subtotal += l.Precio;
+                TableRow row = new TableRow();
+                TableCell cell = new TableCell();
+                tabla.Rows.Add(row);
+                cell.Controls.Add(__controlItem);
+                row.Cells.Add(cell);
+            }
+            return subtotal.ToString() + " euros";
         }
     }
 }

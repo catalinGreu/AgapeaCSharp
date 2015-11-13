@@ -9,8 +9,13 @@ namespace Agapea.App_Code.controladores
 {
     public class ControladorCesta
     {
+    //    private Controlador_Acceso_Ficheros __controlFichero;
         
-        public ControladorCesta() { }
-        //public ControladorCesta() { }
+    //    public ControladorCesta() { }
+
+    //    public string getLibrosPorISBN(string[] isbns )
+    //    {
+    //        return "";
+    //    }
     }
 }

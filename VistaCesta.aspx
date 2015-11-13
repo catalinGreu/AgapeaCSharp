@@ -15,9 +15,30 @@
             position: relative;
             top: 120px;
         }
+
+        .auto-style1 {
+            float: left;
+            width: 889px;
+        }
+
+        #precioFinal {
+            float: right;
+            display: inline;
+        }
+
+        #subtotal {
+            display: inline;
+        }
+        #pie {
+            position: absolute bottom:30px;
+            width: 100%;
+        }
+        #info{
+            float:right;
+        }
     </style>
 </head>
-<body style="max-width:100%; overflow-x:hidden;">
+<body style="max-width: 100%; overflow-x: hidden;">
     <div id="container" class="container">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div id="cabecera" class="navbar-collapse collapse">
@@ -32,7 +53,19 @@
                         <div id="content" class="jumbotron">
                             <h2>Items cesta</h2>
                             <asp:Table ID="tablaItems" runat="server" CssClass="table table-hover"></asp:Table>
+                            <div>
+                                <span id="subtotal" class="col-xs-12 col-sm-10">
+                                    <h2>Subtotal: </h2>
+                                </span>
+                                <span id="precioFinal">
+                                    <h2>
+                                        <asp:Label ID="labelSubtotal" runat="server" Text="Label"></asp:Label></h2>
+                                </span>
+
+
+                            </div>
                         </div>
+                        <div id="info"></div>
                     </div>
 
                 </div>

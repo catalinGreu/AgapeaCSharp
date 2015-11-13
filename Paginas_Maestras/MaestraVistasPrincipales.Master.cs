@@ -12,15 +12,14 @@ namespace Agapea.Paginas_Maestras
 {
     public partial class MaestraVistasPrincipales : System.Web.UI.MasterPage
     {
-        private Controlador_Vista_Inicio __controlInit;
+        private Controlador_Acceso_Ficheros __controlInit;
         private List<Libro> librosFichero;
        
-        private string __categoriaPulsada;
         
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            __controlInit = new Controlador_Vista_Inicio();
+            __controlInit = new Controlador_Acceso_Ficheros();
             librosFichero = __controlInit.infoLibros("./Ficheros/libros.txt");
 
             
@@ -29,21 +28,7 @@ namespace Agapea.Paginas_Maestras
                 cargaTree( this.myTreeView, librosFichero );
 
             }
-            else if ( this.IsPostBack )
-            {
-               
-                /*
-                si he pulsado comprar un libro...
-                    - Boton mapeado contra un libro (ISBN)
-                    - Creo nueva cesta
-                    - Añado ese libro a la cesta
-                    - Modifico el controlador MIniCesta y le sumo 1.
-                    - Además....creo una cookie cesta,
-                    y por cada libro concateno al valor el isbn.
-                    En la vista Cesta...leo esa cookie para cargar los controles
-                    de usuario con lnos datos de ese libro de la Cookie
-                */
-            }
+           
 
 
         }

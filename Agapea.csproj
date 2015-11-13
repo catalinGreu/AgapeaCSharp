@@ -115,9 +115,9 @@
   <ItemGroup>
     <Content Include="App_Code\controladores\ControladorPDF.cs" />
     <Compile Include="App_Code\controladores\ControladorCesta.cs" />
+    <Content Include="App_Code\controladores\ControladorEmail.cs" />
     <Compile Include="App_Code\controladores\ControladorTablas.cs" />
     <Compile Include="App_Code\controladores\Controlador_Acceso_Ficheros.cs" />
-    <Compile Include="App_Code\controladores\Controlador_Vista_Inicio.cs" />
     <Compile Include="App_Code\controladores\Controlador_Vista_Registro.cs" />
     <Compile Include="ControlesUsuario\MiniCesta.ascx.cs">
       <DependentUpon>MiniCesta.ascx</DependentUpon>

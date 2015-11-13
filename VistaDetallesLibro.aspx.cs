@@ -12,7 +12,7 @@ namespace Agapea
 {
     public partial class VistaDetallesLibro : System.Web.UI.Page
     {
-        private Controlador_Vista_Inicio __controlInit;
+        private Controlador_Acceso_Ficheros __controlInit;
         private ControladorTablas __controlTablas;
         private List<Libro> listaRecuperada;
         private string __rutaControl = "~/ControlesUsuario/MiniDetallesLibro.ascx";
@@ -35,7 +35,7 @@ namespace Agapea
 
             #endregion
             __controlTablas = new ControladorTablas(this.Page);
-            __controlInit = new Controlador_Vista_Inicio();
+            __controlInit = new Controlador_Acceso_Ficheros();
             TreeView myTreeView = (TreeView)this.Master.FindControl("myTreeView");
             listaRecuperada = __controlInit.infoLibros("./Ficheros/libros.txt");
 
